@@ -4,7 +4,12 @@
       "Bash(grep -oE '^[^=]{0,40}')",
       "Bash(npx --yes create-next-app@latest . --typescript --tailwind --app --src-dir --import-alias \"@/*\" --eslint --use-npm --turbopack --yes)",
       "Bash(rm -rf ru-menil)",
-      "Bash(npx --yes create-next-app@latest ru-menil --typescript --tailwind --app --src-dir --import-alias \"@/*\" --eslint --use-npm --turbopack --yes)"
+      "Bash(npx --yes create-next-app@latest ru-menil --typescript --tailwind --app --src-dir --import-alias \"@/*\" --eslint --use-npm --turbopack --yes)",
+      "Bash(git commit -q -m ' *)",
+      "Bash(npm install *)",
+      "Bash(node \"C:/Users/eliot/AppData/Local/Temp/claude/C--Users-eliot-Desktop-SITE-PFE-CODE/b172ead3-bae6-4c2c-b922-9ee47208f37c/scratchpad/extract.js\")",
+      "Bash(node -e \"let d='';process.stdin.on\\('data',c=>d+=c\\).on\\('end',\\(\\)=>{JSON.parse\\(d\\).forEach\\(x=>console.log\\(x.pos,x.file,x.mime,Math.round\\(x.bytes/1024\\)+'KB'\\)\\)}\\)\")",
+      "Bash(git add *)"
     ]
   }
 }

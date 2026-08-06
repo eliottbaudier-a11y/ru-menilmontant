@@ -1,26 +1,183 @@
 @import "tailwindcss";
 
+/* =========================================================================
+   Ru de Ménilmontant — feuille de style globale
+   Identité validée (CLAUDE.md 31/07) : bleu #2D308C · profondeur #1B1D5E
+   papier #F3F1EA · eau #63D0DE. Typos : Anton / Barlow Semi Condensed / Spectral
+   ========================================================================= */
+
+@theme {
+  --color-bleu: #2d308c;      /* primaire */
+  --color-nuit: #1b1d5e;      /* profondeur */
+  --color-encre: #12143f;     /* fond le plus profond (footers, 3D) */
+  --color-bleu-clair: #5a5ec8;
+  --color-papier: #f3f1ea;    /* sections claires */
+  --color-eau: #63d0de;       /* accent révélation */
+  --color-brume: #dad9f2;     /* texte secondaire sur fond bleu */
+
+  --font-display: var(--font-anton);
+  --font-body: var(--font-barlow);
+  --font-serif: var(--font-spectral);
+}
+
+/* variables CSS classiques (réutilisées dans les CSS modules) */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bleu: #2d308c;
+  --nuit: #1b1d5e;
+  --encre: #12143f;
+  --bleu-clair: #5a5ec8;
+  --papier: #f3f1ea;
+  --eau: #63d0de;
+  --brume: #dad9f2;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+}
+
+/* masque la scrollbar (comme les maquettes) */
+html,
+body {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bleu);
+  color: var(--papier);
+  font-family: var(--font-body), "Barlow Semi Condensed", system-ui, sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--eau);
+  color: var(--nuit);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* ---- utilitaire display (Anton) ---- */
+.display {
+  font-family: var(--font-display), "Anton", sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: 1.1;
+}
+
+.serif {
+  font-family: var(--font-serif), "Spectral", serif;
+}
+
+/* ---- grain global ---- */
+.grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 80;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---- eyebrow (petit sur-titre à filets) ---- */
+.eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 22px;
+}
+.eyebrow::before,
+.eyebrow::after {
+  content: "";
+  width: 30px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.5;
+}
+.eyebrow.center {
+  justify-content: center;
+}
+.eyebrow.eau {
+  color: var(--eau);
+}
+
+/* ---- révélation au scroll ---- */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 1s ease,
+    transform 1s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ---- bouton / CTA ---- */
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid var(--eau);
+  color: var(--eau);
+  padding: 14px 30px;
+  border-radius: 40px;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition:
+    background 0.3s,
+    color 0.3s;
+  cursor: pointer;
+}
+.cta:hover {
+  background: var(--eau);
+  color: var(--nuit);
+}
+.cta.solid {
+  background: var(--eau);
+  color: var(--nuit);
+}
+.cta.solid:hover {
+  background: transparent;
+  color: var(--eau);
+}
+
+/* section papier (fond clair) */
+.paper {
+  background: var(--papier);
+  color: var(--bleu);
 }

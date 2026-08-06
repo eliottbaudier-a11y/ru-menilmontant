@@ -1,0 +1,163 @@
+[
+ {
+  "pos": 0,
+  "file": "00.jpg",
+  "mime": "image/jpeg",
+  "bytes": 176876,
+  "dup": false
+ },
+ {
+  "pos": 1,
+  "file": "01.jpg",
+  "mime": "image/jpeg",
+  "bytes": 87678,
+  "dup": false
+ },
+ {
+  "pos": 2,
+  "file": "02.jpg",
+  "mime": "image/jpeg",
+  "bytes": 35314,
+  "dup": false
+ },
+ {
+  "pos": 3,
+  "file": "03.jpg",
+  "mime": "image/jpeg",
+  "bytes": 219541,
+  "dup": false
+ },
+ {
+  "pos": 4,
+  "file": "04.jpg",
+  "mime": "image/jpeg",
+  "bytes": 121844,
+  "dup": false
+ },
+ {
+  "pos": 5,
+  "file": "05.jpg",
+  "mime": "image/jpeg",
+  "bytes": 158267,
+  "dup": false
+ },
+ {
+  "pos": 6,
+  "file": "06.jpg",
+  "mime": "image/jpeg",
+  "bytes": 122674,
+  "dup": false
+ },
+ {
+  "pos": 7,
+  "file": "07.jpg",
+  "mime": "image/jpeg",
+  "bytes": 95405,
+  "dup": false
+ },
+ {
+  "pos": 8,
+  "file": "08.jpg",
+  "mime": "image/jpeg",
+  "bytes": 127621,
+  "dup": false
+ },
+ {
+  "pos": 9,
+  "file": "09.jpg",
+  "mime": "image/jpeg",
+  "bytes": 100337,
+  "dup": false
+ },
+ {
+  "pos": 10,
+  "file": "10.jpg",
+  "mime": "image/jpeg",
+  "bytes": 138235,
+  "dup": false
+ },
+ {
+  "pos": 11,
+  "file": "11.jpg",
+  "mime": "image/jpeg",
+  "bytes": 102738,
+  "dup": false
+ },
+ {
+  "pos": 12,
+  "file": "12.jpg",
+  "mime": "image/jpeg",
+  "bytes": 208206,
+  "dup": false
+ },
+ {
+  "pos": 13,
+  "file": "13.jpg",
+  "mime": "image/jpeg",
+  "bytes": 72369,
+  "dup": false
+ },
+ {
+  "pos": 14,
+  "file": "14.jpg",
+  "mime": "image/jpeg",
+  "bytes": 135528,
+  "dup": false
+ },
+ {
+  "pos": 15,
+  "file": "15.jpg",
+  "mime": "image/jpeg",
+  "bytes": 161029,
+  "dup": false
+ },
+ {
+  "pos": 16,
+  "file": "16.jpg",
+  "mime": "image/jpeg",
+  "bytes": 60736,
+  "dup": false
+ },
+ {
+  "pos": 17,
+  "file": "17.jpg",
+  "mime": "image/jpeg",
+  "bytes": 90755,
+  "dup": false
+ },
+ {
+  "pos": 18,
+  "file": "18.jpg",
+  "mime": "image/jpeg",
+  "bytes": 54260,
+  "dup": false
+ },
+ {
+  "pos": 19,
+  "file": "19.jpg",
+  "mime": "image/jpeg",
+  "bytes": 130475,
+  "dup": false
+ },
+ {
+  "pos": 20,
+  "file": "20.jpg",
+  "mime": "image/jpeg",
+  "bytes": 110761,
+  "dup": false
+ },
+ {
+  "pos": 21,
+  "file": "21.jpg",
+  "mime": "image/jpeg",
+  "bytes": 69739,
+  "dup": false
+ },
+ {
+  "pos": 22,
+  "file": "22.jpg",
+  "mime": "image/jpeg",
+  "bytes": 125734,
+  "dup": false
+ }
+]

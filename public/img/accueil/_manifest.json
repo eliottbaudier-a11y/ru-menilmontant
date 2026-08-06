@@ -1,0 +1,51 @@
+[
+ {
+  "pos": 0,
+  "file": "00.jpg",
+  "mime": "image/jpeg",
+  "bytes": 85226,
+  "dup": false
+ },
+ {
+  "pos": 1,
+  "file": "01.jpg",
+  "mime": "image/jpeg",
+  "bytes": 113350,
+  "dup": false
+ },
+ {
+  "pos": 2,
+  "file": "02.jpg",
+  "mime": "image/jpeg",
+  "bytes": 127756,
+  "dup": false
+ },
+ {
+  "pos": 3,
+  "file": "03.jpg",
+  "mime": "image/jpeg",
+  "bytes": 117974,
+  "dup": false
+ },
+ {
+  "pos": 4,
+  "file": "04.jpg",
+  "mime": "image/jpeg",
+  "bytes": 80480,
+  "dup": false
+ },
+ {
+  "pos": 5,
+  "file": "05.jpg",
+  "mime": "image/jpeg",
+  "bytes": 93793,
+  "dup": false
+ },
+ {
+  "pos": 6,
+  "file": "06.jpg",
+  "mime": "image/jpeg",
+  "bytes": 80031,
+  "dup": false
+ }
+]
