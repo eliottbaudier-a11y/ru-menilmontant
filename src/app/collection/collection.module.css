@@ -1,0 +1,255 @@
+.hero {
+  padding: 130px 34px 30px;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+.hero h1 {
+  font-size: clamp(44px, 8vw, 110px);
+}
+.account {
+  margin-top: 26px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 20px 24px;
+  border: 1px solid rgba(99, 208, 222, 0.3);
+  border-radius: 12px;
+  background: rgba(99, 208, 222, 0.05);
+}
+.account .big {
+  font-family: var(--font-display), "Anton";
+  font-size: 34px;
+  color: var(--eau);
+  line-height: 1;
+}
+.account .txt {
+  font-size: 15px;
+  opacity: 0.85;
+  max-width: 48ch;
+  line-height: 1.6;
+}
+.account .actions {
+  margin-left: auto;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.sec {
+  padding: 60px 34px;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+.sechead {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+.sechead h2 {
+  font-size: clamp(28px, 4vw, 54px);
+}
+.sechead .note {
+  font-style: italic;
+  opacity: 0.7;
+  font-size: 14px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 22px;
+}
+.card {
+  border: 1px solid rgba(243, 241, 234, 0.14);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--nuit);
+  display: flex;
+  flex-direction: column;
+}
+.card .thumb {
+  position: relative;
+  aspect-ratio: 4/3;
+  background: var(--encre);
+}
+.card .thumb :global(img) {
+  object-fit: cover;
+}
+.card.locked .thumb :global(img) {
+  filter: grayscale(0.7) brightness(0.5);
+}
+.card .lockmark {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--papier);
+  opacity: 0.7;
+}
+.card .body {
+  padding: 18px 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+.card .rn {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--eau);
+}
+.card .nm {
+  font-family: var(--font-display), "Anton";
+  text-transform: uppercase;
+  font-size: 20px;
+  line-height: 1.05;
+}
+.card .loc {
+  font-size: 13px;
+  opacity: 0.7;
+}
+.card .status {
+  margin-top: 6px;
+  font-size: 13px;
+  font-style: italic;
+}
+.card .status.done {
+  color: var(--eau);
+}
+.card .dl {
+  margin-top: auto;
+  padding-top: 14px;
+}
+.card .dl a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--eau);
+  border: 1px solid rgba(99, 208, 222, 0.4);
+  border-radius: 40px;
+  padding: 8px 16px;
+  transition: 0.3s;
+}
+.card .dl a:hover {
+  background: var(--eau);
+  color: var(--nuit);
+}
+.card .soon {
+  margin-top: auto;
+  padding-top: 14px;
+  font-size: 12px;
+  opacity: 0.5;
+  font-style: italic;
+}
+
+/* ---- récompense / NFT ---- */
+.reward {
+  background: var(--encre);
+  padding: 90px 34px 110px;
+}
+.rewardWrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+@media (max-width: 820px) {
+  .rewardWrap {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+}
+.rewardWrap h2 {
+  font-size: clamp(30px, 4.4vw, 60px);
+  margin-bottom: 18px;
+}
+.rewardWrap p {
+  font-size: 16px;
+  line-height: 1.7;
+  opacity: 0.85;
+  max-width: 44ch;
+  margin-bottom: 20px;
+}
+@media (max-width: 820px) {
+  .rewardWrap p {
+    margin-inline: auto;
+  }
+}
+.badge {
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  border-radius: 40px;
+  border: 1px solid rgba(99, 208, 222, 0.4);
+  color: var(--eau);
+}
+
+/* scène 3D (rotation CSS de la plaque) */
+.scene {
+  perspective: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 360px;
+}
+.disc {
+  position: relative;
+  width: min(80%, 360px);
+  aspect-ratio: 1;
+  transform-style: preserve-3d;
+  animation: spin 14s linear infinite;
+  filter: drop-shadow(0 30px 50px rgba(0, 0, 20, 0.6));
+}
+.disc :global(img) {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+@keyframes spin {
+  to {
+    transform: rotateY(360deg);
+  }
+}
+.disc.locked {
+  animation-play-state: paused;
+  filter: grayscale(0.9) brightness(0.4) blur(1px);
+}
+.lockOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--papier);
+}
+.lockOverlay .n {
+  font-family: var(--font-display), "Anton";
+  font-size: 44px;
+  color: var(--eau);
+}
+.lockOverlay .lab {
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+@media (prefers-reduced-motion: reduce) {
+  .disc {
+    animation: none;
+  }
+}

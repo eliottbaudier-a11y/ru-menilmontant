@@ -14,7 +14,9 @@
       "Bash(echo \"EXIT=$?\")",
       "Bash(npx --yes @21st-dev/cli init --client claude --write)",
       "Bash(git mv *)",
-      "Bash(mv src/middleware.ts src/proxy.ts)"
+      "Bash(mv src/middleware.ts src/proxy.ts)",
+      "Bash(node scripts/generate-qr.mjs https://ru-menilmontant.vercel.app)",
+      "Bash(npm run *)"
     ]
   }
 }

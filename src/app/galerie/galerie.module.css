@@ -1,0 +1,85 @@
+.hero {
+  padding: 140px 34px 40px;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+.hero h1 {
+  font-size: clamp(38px, 6.4vw, 92px);
+  max-width: 16ch;
+}
+.hero .intro {
+  margin-top: 22px;
+  font-size: clamp(16px, 1.8vw, 20px);
+  max-width: 60ch;
+  opacity: 0.85;
+  line-height: 1.7;
+}
+
+.sec {
+  padding: 60px 34px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.sechead {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+.sechead h2 {
+  font-size: clamp(26px, 3.4vw, 48px);
+}
+.sechead .note {
+  font-style: italic;
+  opacity: 0.65;
+  font-size: 14px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 18px;
+}
+.tile {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--nuit);
+}
+.tile :global(img) {
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.05) brightness(0.92);
+  transition:
+    filter 0.6s ease,
+    transform 1.1s ease;
+  transform: scale(1.02);
+}
+.tile:hover :global(img) {
+  filter: grayscale(0);
+  transform: scale(1.06);
+}
+.tile .lab {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 12px 12px;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #fff;
+  background: linear-gradient(transparent, rgba(18, 20, 63, 0.9));
+  z-index: 2;
+  opacity: 0.9;
+}
+
+.credits {
+  max-width: 1120px;
+  margin: 20px auto 0;
+  padding: 0 34px 80px;
+  font-style: italic;
+  opacity: 0.6;
+  font-size: 13px;
+}
