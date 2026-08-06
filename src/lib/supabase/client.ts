@@ -1,0 +1,13 @@
+"use client";
+
+import { createBrowserClient } from "@supabase/ssr";
+import { SUPABASE_ANON_KEY, SUPABASE_URL, isSupabaseConfigured } from "./config";
+
+/**
+ * Client Supabase côté navigateur. Renvoie `null` si les clés ne sont pas
+ * configurées — les appelants basculent alors sur le fallback localStorage.
+ */
+export function createClient() {
+  if (!isSupabaseConfigured) return null;
+  return createBrowserClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+}

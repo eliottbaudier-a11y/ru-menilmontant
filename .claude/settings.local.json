@@ -9,7 +9,12 @@
       "Bash(npm install *)",
       "Bash(node \"C:/Users/eliot/AppData/Local/Temp/claude/C--Users-eliot-Desktop-SITE-PFE-CODE/b172ead3-bae6-4c2c-b922-9ee47208f37c/scratchpad/extract.js\")",
       "Bash(node -e \"let d='';process.stdin.on\\('data',c=>d+=c\\).on\\('end',\\(\\)=>{JSON.parse\\(d\\).forEach\\(x=>console.log\\(x.pos,x.file,x.mime,Math.round\\(x.bytes/1024\\)+'KB'\\)\\)}\\)\")",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(claude mcp *)",
+      "Bash(echo \"EXIT=$?\")",
+      "Bash(npx --yes @21st-dev/cli init --client claude --write)",
+      "Bash(git mv *)",
+      "Bash(mv src/middleware.ts src/proxy.ts)"
     ]
   }
 }

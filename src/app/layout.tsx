@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { anton, barlow, spectral } from "@/lib/fonts";
+import { AppProvider } from "@/lib/store";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -32,7 +33,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body>
         <div className="grain" aria-hidden="true" />
-        {children}
+        <AppProvider>{children}</AppProvider>
       </body>
     </html>
   );

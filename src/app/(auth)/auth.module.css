@@ -1,0 +1,108 @@
+.wrap {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 20px 60px;
+  background: radial-gradient(120% 90% at 50% 12%, #232674 0%, var(--nuit) 45%, var(--encre) 100%);
+}
+
+.card {
+  width: 100%;
+  max-width: 420px;
+}
+
+.card h1 {
+  font-size: clamp(34px, 6vw, 56px);
+  margin-bottom: 8px;
+}
+.card .sub {
+  font-style: italic;
+  opacity: 0.82;
+  margin-bottom: 30px;
+  color: var(--brume);
+}
+
+.field {
+  display: block;
+  margin-bottom: 18px;
+}
+.field label {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin-bottom: 8px;
+}
+.field input {
+  width: 100%;
+  padding: 14px 16px;
+  background: rgba(243, 241, 234, 0.06);
+  border: 1px solid rgba(99, 208, 222, 0.35);
+  border-radius: 8px;
+  color: var(--papier);
+  font-family: inherit;
+  font-size: 16px;
+  transition: border-color 0.25s;
+}
+.field input:focus {
+  outline: none;
+  border-color: var(--eau);
+}
+
+.submit {
+  width: 100%;
+  justify-content: center;
+  margin-top: 8px;
+  border: none;
+  background: var(--eau);
+  color: var(--nuit);
+  font-family: inherit;
+}
+.submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.msg {
+  margin-top: 18px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.msg.err {
+  background: rgba(222, 99, 99, 0.12);
+  border: 1px solid rgba(222, 99, 99, 0.4);
+}
+.msg.ok {
+  background: rgba(99, 208, 222, 0.12);
+  border: 1px solid rgba(99, 208, 222, 0.4);
+  color: var(--eau);
+}
+.msg.warn {
+  background: rgba(243, 241, 234, 0.06);
+  border: 1px solid rgba(243, 241, 234, 0.25);
+}
+
+.alt {
+  margin-top: 26px;
+  font-size: 14px;
+  opacity: 0.8;
+}
+.alt a {
+  color: var(--eau);
+}
+
+.back {
+  display: inline-block;
+  margin-bottom: 30px;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+.back:hover {
+  opacity: 1;
+}
