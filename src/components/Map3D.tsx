@@ -438,7 +438,10 @@ export default function Map3D() {
         lastY = e.clientY;
       }
     };
+    // bloque le menu contextuel / la sélection au maintien (mobile)
+    const onCtx = (e: Event) => e.preventDefault();
     canvas.addEventListener("pointerdown", onDown);
+    canvas.addEventListener("contextmenu", onCtx);
     window.addEventListener("pointerup", onUp);
     window.addEventListener("pointermove", onMove);
 
@@ -541,6 +544,7 @@ export default function Map3D() {
       window.removeEventListener("resize", resize);
       canvas.removeEventListener("pointerdown", onDown);
       canvas.removeEventListener("dblclick", onDblClick);
+      canvas.removeEventListener("contextmenu", onCtx);
       window.removeEventListener("pointerup", onUp);
       window.removeEventListener("pointermove", onMove);
       clearTimeout(copyTO);

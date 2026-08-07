@@ -8,11 +8,20 @@
   overflow: hidden;
   background: #1b1d70;
   touch-action: none;
+  /* empêche la sélection bleue / le menu « exporter » au maintien sur mobile */
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
 }
 .canvas {
   display: block;
   width: 100%;
   height: 100%;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
 }
 
 .ui {
