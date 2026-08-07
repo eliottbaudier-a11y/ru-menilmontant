@@ -16,6 +16,7 @@ export default function LeRuPage() {
     <>
       <Nav />
 
+      <div className={styles.page}>
       <header className={styles.hero}>
         <div className="eyebrow eau">Préambule</div>
         <h1 className="display">Qu&apos;est-ce qu&apos;un ru&nbsp;?</h1>
@@ -142,8 +143,9 @@ export default function LeRuPage() {
           </div>
         </Reveal>
       </section>
+      </div>
 
-      <Footer />
+      <Footer paper />
     </>
   );
 }

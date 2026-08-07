@@ -27,7 +27,8 @@
       "Bash(node ./tmp-trace.mjs public/plaques/plaque2-fonte.png __TRACKED_VAR__/cand.json __TRACKED_VAR__/preview2.png)",
       "Bash(node ./tmp-trace.mjs public/plaques/plaque1-fonte.png __TRACKED_VAR__/cand1.json __TRACKED_VAR__/preview1.png)",
       "Bash(rm -f tmp-trace.mjs)",
-      "Bash(B=\"C:/Users/eliot/Desktop/site PFE 01 08 2026\"; echo \"=== LE RU : body/root background ===\"; grep -oE 'body\\\\{[^}]*background[^;}]*|:root\\\\{[^}]*|--[a-z]+:#[0-9A-Fa-f]{3,6}|background:\\(var\\\\\\([^\\)]*\\\\\\)|#[0-9A-Fa-f]{3,6}\\)' \"$B/le-ru.html\" | grep -iE 'body|background|--\\(bleu|nuit|papier|encre|fond\\)' | head -12; echo \"\"; echo \"=== GALERIE : body/root background ===\"; grep -oE 'body\\\\{[^}]*background[^;}]*|:root\\\\{[^}]*|--[a-z]+:#[0-9A-Fa-f]{3,6}|background:\\(var\\\\\\([^\\)]*\\\\\\)|#[0-9A-Fa-f]{3,6}\\)' \"$B/galerie-plaques.html\" | grep -iE 'body|background|--\\(bleu|nuit|papier|encre|fond\\)' | head -12)"
+      "Bash(B=\"C:/Users/eliot/Desktop/site PFE 01 08 2026\"; echo \"=== LE RU : body/root background ===\"; grep -oE 'body\\\\{[^}]*background[^;}]*|:root\\\\{[^}]*|--[a-z]+:#[0-9A-Fa-f]{3,6}|background:\\(var\\\\\\([^\\)]*\\\\\\)|#[0-9A-Fa-f]{3,6}\\)' \"$B/le-ru.html\" | grep -iE 'body|background|--\\(bleu|nuit|papier|encre|fond\\)' | head -12; echo \"\"; echo \"=== GALERIE : body/root background ===\"; grep -oE 'body\\\\{[^}]*background[^;}]*|:root\\\\{[^}]*|--[a-z]+:#[0-9A-Fa-f]{3,6}|background:\\(var\\\\\\([^\\)]*\\\\\\)|#[0-9A-Fa-f]{3,6}\\)' \"$B/galerie-plaques.html\" | grep -iE 'body|background|--\\(bleu|nuit|papier|encre|fond\\)' | head -12)",
+      "Bash(node /tmp/strip.js 'C:/Users/eliot/Desktop/site PFE 01 08 2026/le-ru.html')"
     ]
   }
 }
