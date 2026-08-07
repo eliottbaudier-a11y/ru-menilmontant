@@ -39,12 +39,13 @@
   }
 }
 
-/* onde re-signalée : pulse doux au survol de la signature */
-.sig .frev {
+/* onde re-signalée : pulse doux au survol de la signature.
+   Les classes .frev / .frd viennent de <Mascot> (globales) → :global(). */
+.sig :global(.frev) {
   opacity: 0.14;
   transition: opacity 0.5s;
 }
-.sig:hover .frev {
+.sig:hover :global(.frev) {
   animation: fwet 2s ease-in-out infinite;
 }
 @keyframes fwet {
@@ -58,31 +59,31 @@
 }
 
 /* pluie au survol */
-.sig .frd {
+.sig :global(.frd) {
   opacity: 0;
 }
-.sig:hover .frd {
+.sig:hover :global(.frd) {
   animation: frain 1.05s linear infinite;
 }
-.sig .frd:nth-child(2) {
+.sig :global(.frd:nth-child(2)) {
   animation-delay: 0.13s;
 }
-.sig .frd:nth-child(3) {
+.sig :global(.frd:nth-child(3)) {
   animation-delay: 0.26s;
 }
-.sig .frd:nth-child(4) {
+.sig :global(.frd:nth-child(4)) {
   animation-delay: 0.39s;
 }
-.sig .frd:nth-child(5) {
+.sig :global(.frd:nth-child(5)) {
   animation-delay: 0.52s;
 }
-.sig .frd:nth-child(6) {
+.sig :global(.frd:nth-child(6)) {
   animation-delay: 0.2s;
 }
-.sig .frd:nth-child(7) {
+.sig :global(.frd:nth-child(7)) {
   animation-delay: 0.33s;
 }
-.sig .frd:nth-child(8) {
+.sig :global(.frd:nth-child(8)) {
   animation-delay: 0.46s;
 }
 @keyframes frain {
@@ -103,8 +104,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .sig:hover .frd,
-  .sig:hover .frev {
+  .sig:hover :global(.frd),
+  .sig:hover :global(.frev) {
     animation: none;
   }
 }
