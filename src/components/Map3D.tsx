@@ -394,7 +394,18 @@ export default function Map3D() {
     const target = new THREE.Vector3(0, 4, 0);
     let theta = 0.85,
       phi = 0.66;
-    const R = 165;
+    // distance recalculée selon le format : sur mobile (portrait) on recule
+    // pour que TOUTE la carte tienne à l'écran d'un coup.
+    let R = 165;
+    function fitDistance() {
+      const aspect = W() / H();
+      const vFov = (camera.fov * Math.PI) / 180;
+      const hFov = 2 * Math.atan(Math.tan(vFov / 2) * aspect);
+      const halfExtent = 56; // demi-emprise du terrain + marge (unités monde)
+      const dV = halfExtent / Math.tan(vFov / 2);
+      const dH = halfExtent / Math.tan(hFov / 2);
+      R = Math.min(430, Math.max(150, Math.max(dV, dH)));
+    }
     let autoRot = true;
     let dragging = false,
       lastX = 0,
@@ -481,6 +492,7 @@ export default function Map3D() {
       camera.aspect = W() / H();
       camera.updateProjectionMatrix();
       renderer.setSize(W(), H(), false);
+      fitDistance();
     }
     window.addEventListener("resize", resize);
     resize();
