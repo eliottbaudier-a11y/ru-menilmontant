@@ -23,7 +23,10 @@
       "Read(//c/Users/eliot/Desktop/site PFE 01 08 2026/**)",
       "Bash(node /tmp/strip.js 'C:/Users/eliot/Desktop/site PFE 01 08 2026/accueil-v3.html')",
       "Bash(node /tmp/strip.js 'C:/Users/eliot/Desktop/site PFE 01 08 2026/galerie-plaques.html')",
-      "Bash(node -e ' *)"
+      "Bash(node -e ' *)",
+      "Bash(node ./tmp-trace.mjs public/plaques/plaque2-fonte.png __TRACKED_VAR__/cand.json __TRACKED_VAR__/preview2.png)",
+      "Bash(node ./tmp-trace.mjs public/plaques/plaque1-fonte.png __TRACKED_VAR__/cand1.json __TRACKED_VAR__/preview1.png)",
+      "Bash(rm -f tmp-trace.mjs)"
     ]
   }
 }
