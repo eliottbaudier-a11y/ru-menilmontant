@@ -16,6 +16,23 @@ const PREVIEW: Record<string, string> = {
   "le-marais": "/img/collection/02.jpg",
 };
 
+// vraies images d'archive HD à télécharger (fichiers dans public/downloads/).
+// { chemin, nom de fichier propre au téléchargement }
+const HD_DOWNLOAD: Record<string, { src: string; filename: string }> = {
+  "aux-sources-du-ru": {
+    src: "/downloads/plaque-1-vignes-de-belleville.jpg",
+    filename: "Ru-de-Menilmontant_Plaque-I_Vignes-de-Belleville.jpg",
+  },
+  "saint-martin": {
+    src: "/downloads/plaque-2-canal-saint-martin.jpg",
+    filename: "Ru-de-Menilmontant_Plaque-II_Canal-Saint-Martin.jpg",
+  },
+  "le-marais": {
+    src: "/downloads/plaque-3-place-des-vosges.jpg",
+    filename: "Ru-de-Menilmontant_Plaque-III_Place-des-Vosges.jpg",
+  },
+};
+
 function LockIcon() {
   return (
     <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6}>
@@ -26,9 +43,10 @@ function LockIcon() {
 }
 
 export default function CollectionClient() {
-  const { isUnlocked, progress, user, supabaseEnabled } = useStore();
+  const { isUnlocked, progress, user, supabaseEnabled, signOut, demoUnlock } = useStore();
   const complete = progress >= TOTAL_PLAQUES;
   const remaining = TOTAL_PLAQUES - progress;
+  const demoDone = ["aux-sources-du-ru", "saint-martin", "le-marais"].every(isUnlocked);
 
   return (
     <>
@@ -61,16 +79,32 @@ export default function CollectionClient() {
               </>
             )}
           </div>
-          {!user && supabaseEnabled && (
-            <div className={styles.actions}>
-              <Link className="cta" href="/login">
-                Se connecter
-              </Link>
-              <Link className="cta solid" href="/signup">
-                Créer un compte
-              </Link>
-            </div>
-          )}
+          <div className={styles.actions}>
+            {!user && supabaseEnabled && (
+              <>
+                <Link className="cta" href="/login">
+                  Se connecter
+                </Link>
+                <Link className="cta solid" href="/signup">
+                  Créer un compte
+                </Link>
+              </>
+            )}
+            {user && (
+              <button className="cta" onClick={() => signOut()}>
+                Se déconnecter
+              </button>
+            )}
+            {!demoDone && (
+              <button
+                className="cta"
+                onClick={() => demoUnlock()}
+                title="Débloque les plaques I·II·III sans scanner (pour la soutenance)"
+              >
+                Mode démo — débloquer I·II·III
+              </button>
+            )}
+          </div>
         </div>
       </header>
 
@@ -84,7 +118,7 @@ export default function CollectionClient() {
           {plaques.map((p) => {
             const unlocked = isUnlocked(p.slug);
             const thumb = PREVIEW[p.slug] ?? p.hero;
-            const hd = p.fonte ?? p.hero;
+            const hd = HD_DOWNLOAD[p.slug];
             return (
               <Reveal key={p.slug} className={`${styles.card} ${unlocked ? "" : styles.locked}`}>
                 <div className={styles.thumb}>
@@ -105,11 +139,19 @@ export default function CollectionClient() {
                     {unlocked ? "✓ Débloquée" : "À scanner sur le terrain"}
                   </span>
                   {unlocked ? (
-                    <div className={styles.dl}>
-                      <a href={hd} download aria-label={`Télécharger l'image HD de la plaque ${p.roman}`}>
-                        Télécharger l&apos;image (HD) ↓
-                      </a>
-                    </div>
+                    hd ? (
+                      <div className={styles.dl}>
+                        <a
+                          href={hd.src}
+                          download={hd.filename}
+                          aria-label={`Télécharger l'image d'archive HD de la plaque ${p.roman}`}
+                        >
+                          Télécharger l&apos;image (HD) ↓
+                        </a>
+                      </div>
+                    ) : (
+                      <div className={styles.soon}>Image HD à venir</div>
+                    )
                   ) : (
                     <div className={styles.soon}>Image disponible après scan</div>
                   )}

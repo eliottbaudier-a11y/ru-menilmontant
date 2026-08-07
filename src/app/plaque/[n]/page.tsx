@@ -3,28 +3,21 @@
 import { useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { getPlaqueByNumber } from "@/data/plaques";
-import { useStore } from "@/lib/store";
 
 /**
- * Cible des QR codes : /plaque/1 … /plaque/8
- * Enregistre le scan (progression) puis redirige vers la fiche /plaques/[slug].
- * Ce niveau d'indirection permet des URL courtes et stables sur les plaques.
+ * Alias court (legacy) : /plaque/1 … /plaque/8 → redirige vers la fiche
+ * /plaques/[slug]?scan=1 (qui enregistre le déblocage). Les QR définitifs
+ * pointent désormais directement vers /plaques/[slug]?scan=1.
  */
 export default function PlaqueScanRedirect() {
   const router = useRouter();
-  const { markScanned } = useStore();
   const params = useParams<{ n: string }>();
 
   useEffect(() => {
     const n = Number(params?.n);
     const plaque = Number.isFinite(n) ? getPlaqueByNumber(n) : undefined;
-    if (!plaque) {
-      router.replace("/");
-      return;
-    }
-    markScanned(plaque.slug);
-    router.replace(`/plaques/${plaque.slug}`);
-  }, [params, markScanned, router]);
+    router.replace(plaque ? `/plaques/${plaque.slug}?scan=1` : "/");
+  }, [params, router]);
 
   return (
     <div

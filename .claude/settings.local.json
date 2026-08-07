@@ -31,7 +31,12 @@
       "Bash(node /tmp/strip.js 'C:/Users/eliot/Desktop/site PFE 01 08 2026/le-ru.html')",
       "Bash(which ffmpeg *)",
       "Bash(node -e \"console.log\\('ffmpeg bin:', require\\('ffmpeg-static'\\)\\)\")",
-      "Bash(node /tmp/strip.js C:/Users/eliot/Downloads/perso-animation.html)"
+      "Bash(node /tmp/strip.js C:/Users/eliot/Downloads/perso-animation.html)",
+      "Bash(cd \"C:/Users/eliot/Desktop/SITE PFE CODE\" && mkdir -p public/downloads && echo \"=== search likely HD source files ===\" && find \"C:/Users/eliot/Downloads\" \"C:/Users/eliot/Desktop\" -maxdepth 2 -type f \\\\\\( -iname \"*vigne*\" -o -iname \"*belleville*\" -o -iname \"*canal*\" -o -iname \"*saint-martin*\" -o -iname \"*vosges*\" -o -iname \"*place-des*\" \\\\\\) 2>/dev/null | head; echo \"--- recent jpg in Downloads \\(last 12\\) ---\"; ls -t \"C:/Users/eliot/Downloads\"/*.jpg \"C:/Users/eliot/Downloads\"/*.jpeg 2>/dev/null | head -12)",
+      "Bash(cp \"C:/Users/eliot/Desktop/935512-vignes-de-belleville.jpg\" public/downloads/plaque-1-vignes-de-belleville.jpg)",
+      "Bash(cp \"C:/Users/eliot/Downloads/Canal_St._Martin_MET_DP200356.jpg\" public/downloads/plaque-2-canal-saint-martin.jpg)",
+      "Bash(cp \"C:/Users/eliot/Desktop/ParisUpdate-MuseeCarnavalet-LeMaraisenHeritage-PlacedesVosges.jpg\" public/downloads/plaque-3-place-des-vosges.jpg)",
+      "Bash(awk '{print $5, $9}')"
     ]
   }
 }

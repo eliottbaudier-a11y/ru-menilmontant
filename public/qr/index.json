@@ -3,49 +3,73 @@
   "plaques": [
     {
       "n": 1,
-      "url": "https://ru-menilmontant.vercel.app/plaque/1",
+      "roman": "I",
+      "slug": "aux-sources-du-ru",
+      "titre": "Aux sources du ru",
+      "url": "https://ru-menilmontant.vercel.app/plaques/aux-sources-du-ru?scan=1",
       "png": "qr/plaque-1.png",
       "svg": "qr/plaque-1.svg"
     },
     {
       "n": 2,
-      "url": "https://ru-menilmontant.vercel.app/plaque/2",
+      "roman": "II",
+      "slug": "saint-martin",
+      "titre": "Saint-Martin",
+      "url": "https://ru-menilmontant.vercel.app/plaques/saint-martin?scan=1",
       "png": "qr/plaque-2.png",
       "svg": "qr/plaque-2.svg"
     },
     {
       "n": 3,
-      "url": "https://ru-menilmontant.vercel.app/plaque/3",
+      "roman": "III",
+      "slug": "le-marais",
+      "titre": "Le Marais",
+      "url": "https://ru-menilmontant.vercel.app/plaques/le-marais?scan=1",
       "png": "qr/plaque-3.png",
       "svg": "qr/plaque-3.svg"
     },
     {
       "n": 4,
-      "url": "https://ru-menilmontant.vercel.app/plaque/4",
+      "roman": "IV",
+      "slug": "grands-boulevards",
+      "titre": "Les Grands Boulevards",
+      "url": "https://ru-menilmontant.vercel.app/plaques/grands-boulevards?scan=1",
       "png": "qr/plaque-4.png",
       "svg": "qr/plaque-4.svg"
     },
     {
       "n": 5,
-      "url": "https://ru-menilmontant.vercel.app/plaque/5",
+      "roman": "V",
+      "slug": "opera-chaussee-dantin",
+      "titre": "Opéra · Chaussée d'Antin",
+      "url": "https://ru-menilmontant.vercel.app/plaques/opera-chaussee-dantin?scan=1",
       "png": "qr/plaque-5.png",
       "svg": "qr/plaque-5.svg"
     },
     {
       "n": 6,
-      "url": "https://ru-menilmontant.vercel.app/plaque/6",
+      "roman": "VI",
+      "slug": "boulevard-haussmann",
+      "titre": "Boulevard Haussmann",
+      "url": "https://ru-menilmontant.vercel.app/plaques/boulevard-haussmann?scan=1",
       "png": "qr/plaque-6.png",
       "svg": "qr/plaque-6.svg"
     },
     {
       "n": 7,
-      "url": "https://ru-menilmontant.vercel.app/plaque/7",
+      "roman": "VII",
+      "slug": "saint-lazare",
+      "titre": "Saint-Lazare",
+      "url": "https://ru-menilmontant.vercel.app/plaques/saint-lazare?scan=1",
       "png": "qr/plaque-7.png",
       "svg": "qr/plaque-7.svg"
     },
     {
       "n": 8,
-      "url": "https://ru-menilmontant.vercel.app/plaque/8",
+      "roman": "VIII",
+      "slug": "alma-la-seine",
+      "titre": "Alma · la Seine",
+      "url": "https://ru-menilmontant.vercel.app/plaques/alma-la-seine?scan=1",
       "png": "qr/plaque-8.png",
       "svg": "qr/plaque-8.svg"
     }

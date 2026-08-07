@@ -15,17 +15,26 @@ import { isSupabaseConfigured } from "@/lib/supabase/config";
 import { DEFAULT_UNLOCKED, TOTAL_PLAQUES } from "@/data/plaques";
 
 const LS_KEY = "ru_scans";
-const LS_SEEDED = "ru_seeded";
+
+/** Démo : à true, les plaques I/II/III sont débloquées d'office (soutenance
+ *  sans scanner sur place). Par défaut false → tout est verrouillé au départ. */
+const DEMO_UNLOCK = process.env.NEXT_PUBLIC_DEMO_UNLOCK === "true";
 
 type Store = {
-  /** clés (slugs) réellement scannées par l'utilisateur */
+  /** clés (slugs) réellement scannées/débloquées par l'utilisateur */
   scanned: string[];
-  /** débloquées = baseline démo (I/II/III) ∪ scannées */
+  /** débloquées effectives (= scannées, + baseline démo si activée) */
   unlocked: string[];
   isUnlocked: (slug: string) => boolean;
+  /** enregistre le déblocage d'une plaque (scan) — local + Supabase si connecté */
   markScanned: (slug: string) => void;
+  /** débloque I/II/III sans QR (bouton démo) */
+  demoUnlock: () => void;
   progress: number; // 0 → TOTAL_PLAQUES
   ratio: number; // 0 → 1
+  /** true une fois l'état lu depuis le stockage (évite le flash « verrouillé ») */
+  hydrated: boolean;
+  demoAvailable: boolean;
   /** état auth */
   user: User | null;
   authReady: boolean;
@@ -48,17 +57,14 @@ function readLocal(): string[] {
 
 export function AppProvider({ children }: { children: ReactNode }) {
   const [scanned, setScanned] = useState<string[]>([]);
+  const [hydrated, setHydrated] = useState(false);
   const [user, setUser] = useState<User | null>(null);
   const [authReady, setAuthReady] = useState(false);
 
-  // -- initialisation : seed démo (I/II/III) au tout premier passage --------
+  // -- initialisation : lecture du stockage local ---------------------------
   useEffect(() => {
-    if (typeof window === "undefined") return;
-    if (!localStorage.getItem(LS_SEEDED)) {
-      localStorage.setItem(LS_KEY, JSON.stringify(DEFAULT_UNLOCKED));
-      localStorage.setItem(LS_SEEDED, "1");
-    }
     setScanned(readLocal());
+    setHydrated(true);
   }, []);
 
   // -- auth Supabase (si configuré) -----------------------------------------
@@ -73,15 +79,17 @@ export function AppProvider({ children }: { children: ReactNode }) {
     } = await supabase.auth.getUser();
     setUser(user ?? null);
     setAuthReady(true);
-    // si connecté, on lit les scans du compte et on fusionne avec le local
     if (user) {
       const { data } = await supabase.from("scans").select("plaque_slug");
       if (data) {
         const remote = data.map((r) => r.plaque_slug as string);
         const merged = Array.from(new Set([...readLocal(), ...remote]));
         setScanned(merged);
-        localStorage.setItem(LS_KEY, JSON.stringify(merged));
-        // pousse les scans locaux non encore enregistrés côté serveur
+        try {
+          localStorage.setItem(LS_KEY, JSON.stringify(merged));
+        } catch {
+          /* ignore */
+        }
         const missing = merged.filter((s) => !remote.includes(s));
         if (missing.length) {
           await supabase
@@ -123,7 +131,6 @@ export function AppProvider({ children }: { children: ReactNode }) {
         }
         return next;
       });
-      // persistance serveur si connecté
       const supabase = createClient();
       if (supabase && user) {
         supabase
@@ -138,16 +145,20 @@ export function AppProvider({ children }: { children: ReactNode }) {
     [user],
   );
 
+  const demoUnlock = useCallback(() => {
+    DEFAULT_UNLOCKED.forEach((slug) => markScanned(slug));
+  }, [markScanned]);
+
   const signOut = useCallback(async () => {
     const supabase = createClient();
     if (supabase) await supabase.auth.signOut();
     setUser(null);
   }, []);
 
-  const unlocked = useMemo(
-    () => Array.from(new Set([...DEFAULT_UNLOCKED, ...scanned])),
-    [scanned],
-  );
+  const unlocked = useMemo(() => {
+    const base = DEMO_UNLOCK ? DEFAULT_UNLOCKED : [];
+    return Array.from(new Set([...base, ...scanned]));
+  }, [scanned]);
 
   const value: Store = useMemo(
     () => ({
@@ -155,15 +166,18 @@ export function AppProvider({ children }: { children: ReactNode }) {
       unlocked,
       isUnlocked: (slug: string) => unlocked.includes(slug),
       markScanned,
+      demoUnlock,
       progress: unlocked.length,
       ratio: unlocked.length / TOTAL_PLAQUES,
+      hydrated,
+      demoAvailable: true,
       user,
       authReady,
       supabaseEnabled: isSupabaseConfigured,
       signOut,
       refreshUser,
     }),
-    [scanned, unlocked, markScanned, user, authReady, signOut, refreshUser],
+    [scanned, unlocked, markScanned, demoUnlock, hydrated, user, authReady, signOut, refreshUser],
   );
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;

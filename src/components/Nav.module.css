@@ -33,6 +33,17 @@
   opacity: 1;
 }
 
+.auth {
+  opacity: 1 !important;
+  color: #63d0de;
+  border: 1px solid rgba(99, 208, 222, 0.6);
+  border-radius: 40px;
+  padding: 5px 14px;
+}
+.auth:hover {
+  background: rgba(99, 208, 222, 0.15);
+}
+
 .tag {
   font-weight: 400;
   opacity: 0.85;

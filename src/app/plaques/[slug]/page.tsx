@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getPlaque, plaques } from "@/data/plaques";
-import PlaqueArticle from "@/components/plaque/PlaqueArticle";
-import LockedPlaque from "@/components/plaque/LockedPlaque";
+import PlaqueGate from "@/components/plaque/PlaqueGate";
 
 export function generateStaticParams() {
   return plaques.map((p) => ({ slug: p.slug }));
@@ -24,16 +23,16 @@ export async function generateMetadata({
 
 export default async function PlaquePage({
   params,
+  searchParams,
 }: {
   params: Promise<{ slug: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const { slug } = await params;
+  const sp = await searchParams;
   const plaque = getPlaque(slug);
   if (!plaque) notFound();
 
-  return plaque.hasContent ? (
-    <PlaqueArticle plaque={plaque} />
-  ) : (
-    <LockedPlaque plaque={plaque} />
-  );
+  const scan = sp?.scan === "1";
+  return <PlaqueGate plaque={plaque} scan={scan} />;
 }

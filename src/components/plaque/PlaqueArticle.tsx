@@ -6,7 +6,6 @@ import Reveal from "@/components/Reveal";
 import Footer from "@/components/Footer";
 import SituerMap from "@/components/SituerMap";
 import CollectionGrid from "@/components/CollectionGrid";
-import ScanMarker from "./ScanMarker";
 import PlaquePlate from "./PlaquePlate";
 import styles from "@/app/plaques/plaque.module.css";
 
@@ -17,8 +16,6 @@ export default function PlaqueArticle({ plaque }: { plaque: Plaque }) {
 
   return (
     <>
-      <ScanMarker slug={plaque.slug} />
-
       {/* nav minimale de fiche */}
       <nav className={styles.navbar}>
         <Link href="/parcours">← Le parcours</Link>
