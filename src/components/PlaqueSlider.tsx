@@ -42,6 +42,40 @@ export default function PlaqueSlider() {
 
   const go = (n: number) => setIdx((n + plaques.length) % plaques.length);
 
+  // --- glissement au doigt (swipe), en plus des flèches ---
+  const drag = useRef({ startX: 0, active: false, moved: false });
+  const [dragPx, setDragPx] = useState(0);
+  const [dragging, setDragging] = useState(false);
+
+  const onSliderDown = (e: React.PointerEvent) => {
+    drag.current = { startX: e.clientX, active: true, moved: false };
+    setDragging(true);
+    setPaused(true);
+    try {
+      (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+    } catch {
+      /* ignoré */
+    }
+  };
+  const onSliderMove = (e: React.PointerEvent) => {
+    if (!drag.current.active) return;
+    const dx = e.clientX - drag.current.startX;
+    if (Math.abs(dx) > 6) drag.current.moved = true;
+    setDragPx(dx);
+  };
+  const onSliderUp = (e: React.PointerEvent) => {
+    if (!drag.current.active) return;
+    const dx = e.clientX - drag.current.startX;
+    drag.current.active = false;
+    setDragging(false);
+    setDragPx(0);
+    const cw = (sliderRef.current?.clientWidth ?? 0) < 680 ? 300 : CARD;
+    const threshold = Math.min(70, cw * 0.2);
+    if (dx <= -threshold) go(idx + 1);
+    else if (dx >= threshold) go(idx - 1);
+    window.setTimeout(() => setPaused(false), 500);
+  };
+
   return (
     <section
       className={styles.section}
@@ -59,8 +93,21 @@ export default function PlaqueSlider() {
         </p>
       </div>
 
-      <div className={styles.slider} ref={sliderRef}>
-        <div className={styles.track} style={{ transform: `translateX(${offset}px)` }}>
+      <div
+        className={styles.slider}
+        ref={sliderRef}
+        onPointerDown={onSliderDown}
+        onPointerMove={onSliderMove}
+        onPointerUp={onSliderUp}
+        onPointerCancel={onSliderUp}
+      >
+        <div
+          className={styles.track}
+          style={{
+            transform: `translateX(${offset + dragPx}px)`,
+            transition: dragging ? "none" : undefined,
+          }}
+        >
           {plaques.map((p, i) => {
             const unlocked = isUnlocked(p.slug);
             return (
@@ -69,7 +116,11 @@ export default function PlaqueSlider() {
                 className={`${styles.card} ${i === idx ? styles.active : ""} ${
                   unlocked ? "" : styles.locked
                 }`}
-                onClick={() => (i === idx ? router.push(`/plaques/${p.slug}`) : go(i))}
+                onClick={() => {
+                  if (drag.current.moved) return; // c'était un swipe, pas un tap
+                  if (i === idx) router.push(`/plaques/${p.slug}`);
+                  else go(i);
+                }}
               >
                 <div className={styles.img}>
                   <Image src={p.hero} alt="" fill sizes="380px" style={{ objectFit: "cover" }} />
