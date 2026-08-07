@@ -432,6 +432,11 @@ export default function Map3D() {
       autoRot = false;
       lastX = e.clientX;
       lastY = e.clientY;
+      // place le curseur de détection sur le point touché/cliqué : un simple
+      // tap (ou clic) sur une plaque affiche aussitôt son infobulle.
+      const r = container.getBoundingClientRect();
+      mouse.x = ((e.clientX - r.left) / r.width) * 2 - 1;
+      mouse.y = -((e.clientY - r.top) / r.height) * 2 + 1;
     };
     const onUp = () => (dragging = false);
     const onMove = (e: PointerEvent) => {
