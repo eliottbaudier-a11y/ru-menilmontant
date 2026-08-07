@@ -1,201 +1,309 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import { useState } from "react";
 import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
-import Reveal from "@/components/Reveal";
 import { plaques, TOTAL_PLAQUES } from "@/data/plaques";
 import { useStore } from "@/lib/store";
+import { createClient } from "@/lib/supabase/client";
 import styles from "./collection.module.css";
 
-// visuels d'aperçu disponibles pour la collection (extraits des maquettes)
 const PREVIEW: Record<string, string> = {
   "aux-sources-du-ru": "/img/collection/00.jpg",
   "saint-martin": "/img/collection/01.jpg",
   "le-marais": "/img/collection/02.jpg",
 };
 
-// vraies images d'archive HD à télécharger (fichiers dans public/downloads/).
-// { chemin, nom de fichier propre au téléchargement }
+// vraies images d'archive HD (public/downloads/) + nom de fichier propre
 const HD_DOWNLOAD: Record<string, { src: string; filename: string }> = {
   "aux-sources-du-ru": {
     src: "/downloads/plaque-1-vignes-de-belleville.jpg",
-    filename: "Ru-de-Menilmontant_Plaque-I_Vignes-de-Belleville.jpg",
+    filename: "ru-plaque-1-vignes-de-belleville.jpg",
   },
   "saint-martin": {
     src: "/downloads/plaque-2-canal-saint-martin.jpg",
-    filename: "Ru-de-Menilmontant_Plaque-II_Canal-Saint-Martin.jpg",
+    filename: "ru-plaque-2-canal-saint-martin.jpg",
   },
   "le-marais": {
     src: "/downloads/plaque-3-place-des-vosges.jpg",
-    filename: "Ru-de-Menilmontant_Plaque-III_Place-des-Vosges.jpg",
+    filename: "ru-plaque-3-place-des-vosges.jpg",
   },
 };
 
-function LockIcon() {
+/** roundel (rayons + double onde d'eau), aux couleurs passées en props */
+function Roundel({ ray, water, gradient }: { ray: string; water: string; gradient?: boolean }) {
+  const rays = Array.from({ length: 16 }).map((_, i) => {
+    const a = (i * 22.5 * Math.PI) / 180;
+    return (
+      <line
+        key={i}
+        x1={(50 + 12 * Math.cos(a)).toFixed(1)}
+        y1={(50 + 12 * Math.sin(a)).toFixed(1)}
+        x2={(50 + 40 * Math.cos(a)).toFixed(1)}
+        y2={(50 + 40 * Math.sin(a)).toFixed(1)}
+      />
+    );
+  });
   return (
-    <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6}>
-      <rect x="5" y="11" width="14" height="10" rx="2" />
-      <path d="M8 11V8a4 4 0 0 1 8 0v3" />
+    <svg viewBox="0 0 100 100" aria-hidden="true">
+      {gradient && (
+        <>
+          <defs>
+            <radialGradient id="pl" cx="42%" cy="38%">
+              <stop offset="0" stopColor="#3a3d80" />
+              <stop offset="1" stopColor="#12143f" />
+            </radialGradient>
+          </defs>
+          <circle cx="50" cy="50" r="49" fill="url(#pl)" />
+          <circle cx="50" cy="50" r="49" fill="none" stroke="#2b2e7a" strokeWidth="1.5" />
+        </>
+      )}
+      <g fill="none" stroke={ray} strokeWidth="1.4">
+        <circle cx="50" cy="50" r="46" />
+        <circle cx="50" cy="50" r="40" />
+        <circle cx="50" cy="50" r="12" />
+        {rays}
+      </g>
+      <path d="M22 44 C34 38 40 54 52 48 S70 42 80 52" fill="none" stroke={water} strokeWidth="2.6" strokeLinecap="round" />
+      <path d="M26 60 C36 54 44 66 56 60 S72 56 78 62" fill="none" stroke={water} strokeWidth="1.7" strokeLinecap="round" opacity="0.7" />
     </svg>
   );
 }
 
 export default function CollectionClient() {
-  const { isUnlocked, progress, user, supabaseEnabled, signOut, demoUnlock } = useStore();
+  const { isUnlocked, progress, ratio, user, supabaseEnabled, signOut, demoUnlock, refreshUser } =
+    useStore();
   const complete = progress >= TOTAL_PLAQUES;
-  const remaining = TOTAL_PLAQUES - progress;
   const demoDone = ["aux-sources-du-ru", "saint-martin", "le-marais"].every(isUnlocked);
+
+  // formulaire de compte
+  const [tab, setTab] = useState<"login" | "signup">("login");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [pending, setPending] = useState(false);
+  const [msg, setMsg] = useState<{ type: "err" | "ok"; text: string } | null>(null);
+
+  async function submit(e: React.FormEvent) {
+    e.preventDefault();
+    setMsg(null);
+    const supabase = createClient();
+    if (!supabase) {
+      setMsg({
+        type: "ok",
+        text: "Comptes en ligne bientôt actifs. En attendant, ta progression est sauvegardée sur cet appareil.",
+      });
+      return;
+    }
+    setPending(true);
+    try {
+      if (tab === "login") {
+        const { error } = await supabase.auth.signInWithPassword({ email, password });
+        if (error) throw error;
+        await refreshUser();
+      } else {
+        const { error } = await supabase.auth.signUp({ email, password });
+        if (error) throw error;
+        setMsg({ type: "ok", text: "Compte créé. Confirme ton e-mail puis connecte-toi." });
+      }
+    } catch (err) {
+      setMsg({ type: "err", text: (err as Error).message });
+    } finally {
+      setPending(false);
+    }
+  }
 
   return (
     <>
       <Nav />
+      <div className={styles.page}>
+        <header className={styles.hero}>
+          <div className="eyebrow eau">Mon compte</div>
+          <h1 className="display">Ma Collection</h1>
+          <p>
+            Ton compte garde une vraie trace de chaque plaque scannée. Chaque plaque débloquée te
+            donne son image en HD, et scanner les huit débloque la récompense finale.
+          </p>
+        </header>
 
-      <header className={styles.hero}>
-        <div className="eyebrow eau">Mon compte</div>
-        <h1 className="display">Ma Collection</h1>
+        {/* compte : formulaire + état */}
+        <section className={styles.sec}>
+          <div className={styles.account}>
+            <div className={styles.accForm}>
+              {user ? (
+                <>
+                  <div style={{ fontSize: 18, fontWeight: 500, marginBottom: 8 }}>
+                    Connecté·e
+                  </div>
+                  <div style={{ opacity: 0.75, fontSize: 14 }}>{user.email}</div>
+                  <p className={styles.mini}>
+                    Tes plaques scannées sont sauvegardées sur ton compte et te suivent sur tous tes
+                    appareils.
+                  </p>
+                </>
+              ) : (
+                <form onSubmit={submit}>
+                  <div className={styles.tabs}>
+                    <button
+                      type="button"
+                      className={`${styles.tab} ${tab === "login" ? styles.on : ""}`}
+                      onClick={() => setTab("login")}
+                    >
+                      Connexion
+                    </button>
+                    <button
+                      type="button"
+                      className={`${styles.tab} ${tab === "signup" ? styles.on : ""}`}
+                      onClick={() => setTab("signup")}
+                    >
+                      Inscription
+                    </button>
+                  </div>
+                  <label>E-mail</label>
+                  <input
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="ton@email.fr"
+                  />
+                  <label>Mot de passe</label>
+                  <input
+                    type="password"
+                    required
+                    minLength={6}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="••••••••"
+                  />
+                  <button className={styles.btn} disabled={pending}>
+                    {pending ? "…" : tab === "login" ? "Se connecter" : "Créer mon compte"}
+                  </button>
+                  {msg && <div className={`${styles.msg} ${styles[msg.type]}`}>{msg.text}</div>}
+                  <p className={styles.mini}>
+                    Ton compte sauvegarde tes plaques scannées et débloque ta récompense. Sans
+                    compte, la progression reste locale à ton appareil.
+                    {!supabaseEnabled && " (Comptes en ligne bientôt activés.)"}
+                  </p>
+                </form>
+              )}
+            </div>
 
-        <div className={styles.account}>
-          <div className={styles.big}>
-            {progress} / {TOTAL_PLAQUES}
-          </div>
-          <div className={styles.txt}>
-            {user ? (
-              <>
-                Connecté·e en tant que <strong>{user.email}</strong>. Ton compte sauvegarde chaque
-                plaque scannée ; télécharge l&apos;image HD de chaque plaque débloquée, et scanne
-                les huit pour débloquer la récompense finale.
-              </>
-            ) : supabaseEnabled ? (
-              <>
-                Sans compte, ta progression reste locale à cet appareil. Crée un compte pour la
-                sauvegarder et la retrouver partout.
-              </>
-            ) : (
-              <>
-                Ta progression est sauvegardée sur cet appareil. Les comptes en ligne seront
-                activés une fois la base de données connectée.
-              </>
-            )}
-          </div>
-          <div className={styles.actions}>
-            {!user && supabaseEnabled && (
-              <>
-                <Link className="cta" href="/login">
-                  Se connecter
-                </Link>
-                <Link className="cta solid" href="/signup">
-                  Créer un compte
-                </Link>
-              </>
-            )}
-            {user && (
-              <button className="cta" onClick={() => signOut()}>
-                Se déconnecter
-              </button>
-            )}
-            {!demoDone && (
-              <button
-                className="cta"
-                onClick={() => demoUnlock()}
-                title="Débloque les plaques I·II·III sans scanner (pour la soutenance)"
-              >
-                Mode démo — débloquer I·II·III
-              </button>
-            )}
-          </div>
-        </div>
-      </header>
-
-      {/* mes plaques */}
-      <section className={styles.sec}>
-        <div className={styles.sechead}>
-          <h2 className="display">Mes plaques</h2>
-          <span className={styles.note}>télécharge l&apos;image HD de chaque plaque débloquée</span>
-        </div>
-        <div className={styles.grid}>
-          {plaques.map((p) => {
-            const unlocked = isUnlocked(p.slug);
-            const thumb = PREVIEW[p.slug] ?? p.hero;
-            const hd = HD_DOWNLOAD[p.slug];
-            return (
-              <Reveal key={p.slug} className={`${styles.card} ${unlocked ? "" : styles.locked}`}>
-                <div className={styles.thumb}>
-                  <Image src={thumb} alt="" fill sizes="280px" />
-                  {!unlocked && (
-                    <div className={styles.lockmark}>
-                      <LockIcon />
-                    </div>
-                  )}
-                </div>
-                <div className={styles.body}>
-                  <span className={styles.rn}>Plaque {p.roman} / VIII</span>
-                  <span className={styles.nm}>{p.title}</span>
-                  <span className={styles.loc}>
-                    {p.quartier} · {p.arrondissement}
-                  </span>
-                  <span className={`${styles.status} ${unlocked ? styles.done : ""}`}>
-                    {unlocked ? "✓ Débloquée" : "À scanner sur le terrain"}
-                  </span>
-                  {unlocked ? (
-                    hd ? (
-                      <div className={styles.dl}>
-                        <a
-                          href={hd.src}
-                          download={hd.filename}
-                          aria-label={`Télécharger l'image d'archive HD de la plaque ${p.roman}`}
-                        >
-                          Télécharger l&apos;image (HD) ↓
-                        </a>
-                      </div>
-                    ) : (
-                      <div className={styles.soon}>Image HD à venir</div>
-                    )
-                  ) : (
-                    <div className={styles.soon}>Image disponible après scan</div>
-                  )}
-                </div>
-              </Reveal>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* récompense / NFT */}
-      <section className={styles.reward}>
-        <div className={styles.rewardWrap}>
-          <div className={styles.scene}>
-            <div className={`${styles.disc} ${complete ? "" : styles.locked}`}>
-              <Image src="/plaques/plaque1-fonte.png" alt="Plaque du parcours complet, en 3D" width={720} height={720} priority={false} />
-              {!complete && (
-                <div className={styles.lockOverlay}>
-                  <LockIcon />
-                  <div className={styles.n}>{progress}/8</div>
-                  <div className={styles.lab}>encore {remaining} plaque{remaining > 1 ? "s" : ""}</div>
-                </div>
+            <div className={styles.accState}>
+              <div className={styles.chip}>
+                ● {user ? `Connecté · ${user.email?.split("@")[0]}` : "Progression locale"}
+              </div>
+              <div className={styles.big}>
+                {progress}
+                <span>/{TOTAL_PLAQUES}</span>
+              </div>
+              <div className={styles.lbl}>
+                {user ? "plaques sauvegardées dans ton compte" : "plaques débloquées sur cet appareil"}
+              </div>
+              <div className={styles.progbar}>
+                <span style={{ width: `${Math.round(ratio * 100)}%` }} />
+              </div>
+              {!demoDone && (
+                <button className={styles.demo} onClick={() => demoUnlock()}>
+                  Mode démo — débloquer I·II·III
+                </button>
+              )}
+              {user && (
+                <button className={styles.signout} onClick={() => signOut()}>
+                  Se déconnecter
+                </button>
               )}
             </div>
           </div>
-          <div>
-            <div className="eyebrow eau">Ma récompense</div>
-            <h2 className="display">Le NFT du parcours complet</h2>
-            <p>
-              Scanne les huit plaques pour débloquer la récompense : la plaque du parcours
-              complet, en 3D — une plaque qui tourne, en édition unique.
-            </p>
-            {complete ? (
-              <span className={styles.badge}>✓ Débloqué — 8 / 8 · édition unique (NFT à venir)</span>
-            ) : (
-              <span className={styles.badge}>
-                Débloqué à 8/8 — plus que {remaining} plaque{remaining > 1 ? "s" : ""}
-              </span>
-            )}
-          </div>
-        </div>
-      </section>
+        </section>
 
-      <Footer />
+        {/* mes plaques */}
+        <section className={styles.sec}>
+          <div className={styles.sechead}>
+            <h2 className="display">Mes plaques</h2>
+            <span>télécharge l&apos;image HD de chaque plaque débloquée</span>
+          </div>
+          <div className={styles.grid}>
+            {plaques.map((p) => {
+              const unlocked = isUnlocked(p.slug);
+              const thumb = PREVIEW[p.slug] ?? p.hero;
+              const hd = HD_DOWNLOAD[p.slug];
+              return (
+                <article key={p.slug} className={`${styles.pcard} ${unlocked ? "" : styles.off}`}>
+                  {unlocked ? (
+                    <div className={styles.pimg}>
+                      <Image src={thumb} alt="" fill sizes="280px" />
+                      <span className={styles.rd}>
+                        <Roundel ray="#EDEDFF" water="#63D0DE" />
+                      </span>
+                    </div>
+                  ) : (
+                    <div className={`${styles.pimg} ${styles.locked}`}>
+                      <Roundel ray="#2D308C" water="#2D308C" />
+                    </div>
+                  )}
+                  <div className={styles.pmeta}>
+                    <div className={styles.pn}>
+                      Plaque {p.roman} · {p.title}
+                    </div>
+                    <div className={styles.pl}>
+                      {p.quartier} · {p.arrondissement}
+                    </div>
+                    <div className={`${styles.pscan} ${unlocked ? "" : styles.off}`}>
+                      {unlocked ? "✓ Débloquée" : "À scanner sur le terrain"}
+                    </div>
+                    {unlocked && hd ? (
+                      <a className={styles.dl} href={hd.src} download={hd.filename}>
+                        Télécharger l&apos;image (HD) ↓
+                      </a>
+                    ) : (
+                      <span className={`${styles.dl} ${styles.muted}`}>
+                        {unlocked ? "Image HD à venir" : "Image disponible après scan"}
+                      </span>
+                    )}
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </section>
+
+        {/* récompense */}
+        <section className={styles.sec}>
+          <div className={styles.sechead}>
+            <h2 className="display">Ma récompense</h2>
+            <span>le NFT du parcours complet</span>
+          </div>
+          <div className={styles.reward}>
+            <div className={styles.spinwrap}>
+              <div className={`${styles.spin} ${complete ? "" : styles.locked}`}>
+                <Roundel ray="#63D0DE" water="#8CEBF5" gradient />
+              </div>
+            </div>
+            <div>
+              <h3>Le parcours complet</h3>
+              <p>
+                Scanne les huit plaques pour débloquer la récompense : la plaque du parcours complet,
+                en 3D — une plaque qui tourne, en édition unique (NFT à venir).
+              </p>
+              <div className={styles.rprog}>
+                {complete ? "✓ Débloqué — 8 / 8" : `Débloqué à 8/8 — plus que ${TOTAL_PLAQUES - progress} plaques`}
+              </div>
+              <span className={styles.badge}>
+                {complete ? "Récompense débloquée" : `Récompense verrouillée — ${progress}/8`}
+              </span>
+            </div>
+          </div>
+        </section>
+
+        <footer className={styles.foot}>
+          <div>Ru de Ménilmontant · Les ruisseaux oubliés de Paris</div>
+          <div className={styles.sub}>
+            Ma Collection · compte, images HD &amp; récompense
+            <br />
+            Eliott Baudier · 2026
+          </div>
+        </footer>
+      </div>
     </>
   );
 }

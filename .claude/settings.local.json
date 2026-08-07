@@ -36,7 +36,8 @@
       "Bash(cp \"C:/Users/eliot/Desktop/935512-vignes-de-belleville.jpg\" public/downloads/plaque-1-vignes-de-belleville.jpg)",
       "Bash(cp \"C:/Users/eliot/Downloads/Canal_St._Martin_MET_DP200356.jpg\" public/downloads/plaque-2-canal-saint-martin.jpg)",
       "Bash(cp \"C:/Users/eliot/Desktop/ParisUpdate-MuseeCarnavalet-LeMaraisenHeritage-PlacedesVosges.jpg\" public/downloads/plaque-3-place-des-vosges.jpg)",
-      "Bash(awk '{print $5, $9}')"
+      "Bash(awk '{print $5, $9}')",
+      "Bash(node /tmp/strip.js C:/Users/eliot/Downloads/ma-collection_2.html)"
     ]
   }
 }

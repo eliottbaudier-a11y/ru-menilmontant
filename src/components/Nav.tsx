@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useStore } from "@/lib/store";
 import styles from "./Nav.module.css";
 
 const LINKS = [
@@ -16,7 +15,6 @@ const LINKS = [
 /** Barre de navigation fixe, mix-blend-difference (lisible sur tout fond). */
 export default function Nav() {
   const pathname = usePathname();
-  const { user, authReady } = useStore();
 
   return (
     <nav className={styles.nav}>
@@ -32,16 +30,6 @@ export default function Nav() {
             </Link>
           );
         })}
-        {authReady &&
-          (user ? (
-            <Link href="/collection" className={styles.auth}>
-              Mon compte
-            </Link>
-          ) : (
-            <Link href="/login" className={styles.auth}>
-              Se connecter
-            </Link>
-          ))}
       </div>
       <div className={styles.tag}>Paris · 629 → 1823</div>
     </nav>
