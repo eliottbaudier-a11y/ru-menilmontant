@@ -37,7 +37,15 @@
       "Bash(cp \"C:/Users/eliot/Downloads/Canal_St._Martin_MET_DP200356.jpg\" public/downloads/plaque-2-canal-saint-martin.jpg)",
       "Bash(cp \"C:/Users/eliot/Desktop/ParisUpdate-MuseeCarnavalet-LeMaraisenHeritage-PlacedesVosges.jpg\" public/downloads/plaque-3-place-des-vosges.jpg)",
       "Bash(awk '{print $5, $9}')",
-      "Bash(node /tmp/strip.js C:/Users/eliot/Downloads/ma-collection_2.html)"
+      "Bash(node /tmp/strip.js C:/Users/eliot/Downloads/ma-collection_2.html)",
+      "Bash(wc -c)",
+      "Bash(echo 'size: __CMDSUB_OUTPUT__')",
+      "Bash(cp __TRACKED_VAR__/00.jpg public/img/collection/00.jpg)",
+      "Bash(cp __TRACKED_VAR__/02.jpg public/img/collection/01.jpg)",
+      "Bash(cp __TRACKED_VAR__/04.jpg public/img/collection/02.jpg)",
+      "Bash(cp __TRACKED_VAR__/01.jpg public/downloads/plaque-1-vignes-de-belleville.jpg)",
+      "Bash(cp __TRACKED_VAR__/03.jpg public/downloads/plaque-2-canal-saint-martin.jpg)",
+      "Bash(rm -f public/img/collection/03.jpg public/img/collection/04.jpg public/img/collection/05.jpg)"
     ]
   }
 }
