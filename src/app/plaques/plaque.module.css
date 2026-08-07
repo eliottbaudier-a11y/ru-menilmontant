@@ -330,21 +330,37 @@
   z-index: 2;
   pointer-events: none;
 }
-.platefig .onde path {
+.ru {
   fill: none;
   stroke: var(--eau);
-  stroke-width: 1.6;
+  stroke-width: 1.25;
   stroke-linecap: round;
+  stroke-linejoin: round;
   filter: drop-shadow(0 0 3px var(--eau)) drop-shadow(0 0 8px rgba(99, 208, 222, 0.7));
   opacity: 0;
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
 }
-.platefig:hover .onde path {
+.platefig:hover .ru,
+.platefig.drawn .ru {
   opacity: 1;
+}
+.platefig:hover .top,
+.platefig.drawn .top {
   animation: rudraw 1.5s ease forwards;
 }
+.platefig:hover .bot,
+.platefig.drawn .bot {
+  animation: rudraw 1.4s ease 1.5s forwards;
+}
+/* la lueur radiale s'active aussi à la révélation au scroll */
+.platefig.drawn::before {
+  opacity: 1;
+}
 @keyframes rudraw {
+  from {
+    stroke-dashoffset: 1;
+  }
   to {
     stroke-dashoffset: 0;
   }

@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import SituerMap from "@/components/SituerMap";
 import CollectionGrid from "@/components/CollectionGrid";
 import ScanMarker from "./ScanMarker";
+import PlaquePlate from "./PlaquePlate";
 import styles from "@/app/plaques/plaque.module.css";
 
 export default function PlaqueArticle({ plaque }: { plaque: Plaque }) {
@@ -97,24 +98,7 @@ export default function PlaqueArticle({ plaque }: { plaque: Plaque }) {
       {/* l'objet : plaque en fonte */}
       <section className={`paper ${styles.sec}`}>
         <div className={`${styles.wrap} ${styles.plaqueobj}`}>
-          <div>
-            <figure className={styles.platefig}>
-              {plaque.fonte && (
-                <Image
-                  className={styles.plate}
-                  src={plaque.fonte}
-                  alt={`Plaque en fonte gravée — ${plaque.title}`}
-                  width={860}
-                  height={860}
-                  sizes="(max-width:820px) 90vw, 430px"
-                />
-              )}
-              <svg className={styles.onde} viewBox="0 0 100 100" preserveAspectRatio="none">
-                <path d="M50 20 C 46 34 54 40 49 52 C 45 63 53 70 50 82" />
-              </svg>
-            </figure>
-            <div className={styles.hint}>Survolez : l&apos;eau révèle le tracé du ru ↑</div>
-          </div>
+          <PlaquePlate plaque={plaque} />
           <Reveal>
             <div className="eyebrow">L&apos;objet</div>
             <h3 className="display">{c.object.title}</h3>

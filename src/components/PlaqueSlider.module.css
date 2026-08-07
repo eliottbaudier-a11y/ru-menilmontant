@@ -164,6 +164,11 @@
   align-items: center;
   justify-content: center;
 }
+.arrow svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
 .arrow:hover {
   background: var(--eau);
   color: var(--nuit);

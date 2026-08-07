@@ -99,10 +99,16 @@ export default function PlaqueSlider() {
 
       <div className={styles.ctrl}>
         <button className={styles.arrow} onClick={() => go(idx - 1)} aria-label="Précédent">
-          ←
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <line x1="20" y1="12" x2="5" y2="12" />
+            <polyline points="12 19 5 12 12 5" />
+          </svg>
         </button>
         <button className={styles.arrow} onClick={() => go(idx + 1)} aria-label="Suivant">
-          →
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <line x1="4" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </svg>
         </button>
         <span className={styles.idx}>
           <b>{String(idx + 1).padStart(2, "0")}</b> / 08

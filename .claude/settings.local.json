@@ -22,7 +22,8 @@
       "Bash(echo \"=== dossier existe ? ===\")",
       "Read(//c/Users/eliot/Desktop/site PFE 01 08 2026/**)",
       "Bash(node /tmp/strip.js 'C:/Users/eliot/Desktop/site PFE 01 08 2026/accueil-v3.html')",
-      "Bash(node /tmp/strip.js 'C:/Users/eliot/Desktop/site PFE 01 08 2026/galerie-plaques.html')"
+      "Bash(node /tmp/strip.js 'C:/Users/eliot/Desktop/site PFE 01 08 2026/galerie-plaques.html')",
+      "Bash(node -e ' *)"
     ]
   }
 }
