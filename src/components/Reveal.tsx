@@ -35,7 +35,9 @@ export default function Reveal({
           }
         });
       },
-      { threshold: 0.14 },
+      // seuil 0 + marge basse : se déclenche dès que le bloc entre dans le
+      // viewport, même s'il est plus haut que l'écran (grilles longues sur mobile).
+      { threshold: 0, rootMargin: "0px 0px -8% 0px" },
     );
     io.observe(el);
     return () => io.disconnect();

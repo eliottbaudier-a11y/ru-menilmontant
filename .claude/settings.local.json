@@ -45,7 +45,9 @@
       "Bash(cp __TRACKED_VAR__/04.jpg public/img/collection/02.jpg)",
       "Bash(cp __TRACKED_VAR__/01.jpg public/downloads/plaque-1-vignes-de-belleville.jpg)",
       "Bash(cp __TRACKED_VAR__/03.jpg public/downloads/plaque-2-canal-saint-martin.jpg)",
-      "Bash(rm -f public/img/collection/03.jpg public/img/collection/04.jpg public/img/collection/05.jpg)"
+      "Bash(rm -f public/img/collection/03.jpg public/img/collection/04.jpg public/img/collection/05.jpg)",
+      "Bash(sed -i 's|^        </Reveal>|        </div>|' src/app/galerie/page.tsx)",
+      "Bash(sed -i '/^import Reveal from \"@\\\\/components\\\\/Reveal\";$/d' src/app/galerie/page.tsx)"
     ]
   }
 }

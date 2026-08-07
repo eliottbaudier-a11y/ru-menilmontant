@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import Reveal from "@/components/Reveal";
 import styles from "./galerie.module.css";
 
 export const metadata: Metadata = {
@@ -43,7 +41,9 @@ const TIME = [
 function Tile({ src, label }: { src: string; label: string }) {
   return (
     <div className={styles.tile}>
-      <Image src={src} alt={label} fill sizes="(max-width:640px) 50vw, 220px" />
+      {/* vignette légère servie directement (chargement fiable mobile + web) */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={src} alt={label} loading="lazy" />
       <span className={styles.lab}>{label}</span>
     </div>
   );
@@ -70,11 +70,11 @@ export default function GaleriePage() {
           <h2 className="display">À travers le monde</h2>
           <span className={styles.note}>survolez pour révéler la couleur</span>
         </div>
-        <Reveal className={styles.grid}>
+        <div className={styles.grid}>
           {WORLD.map((label, i) => (
             <Tile key={i} src={`/img/galerie/${String(i).padStart(2, "0")}.jpg`} label={label} />
           ))}
-        </Reveal>
+        </div>
       </section>
 
       <section className={styles.sec}>
@@ -82,7 +82,7 @@ export default function GaleriePage() {
           <h2 className="display">Au fil du temps</h2>
           <span className={styles.note}>de la Rome antique à aujourd&apos;hui</span>
         </div>
-        <Reveal className={styles.grid}>
+        <div className={styles.grid}>
           {TIME.map((label, i) => (
             <Tile
               key={i}
@@ -90,7 +90,7 @@ export default function GaleriePage() {
               label={label}
             />
           ))}
-        </Reveal>
+        </div>
       </section>
 
       <p className={styles.credits}>

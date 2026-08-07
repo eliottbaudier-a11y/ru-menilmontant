@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
 import Nav from "@/components/Nav";
 import { plaques, TOTAL_PLAQUES } from "@/data/plaques";
@@ -231,7 +230,9 @@ export default function CollectionClient() {
                 <article key={p.slug} className={`${styles.pcard} ${unlocked ? "" : styles.off}`}>
                   {unlocked ? (
                     <div className={styles.pimg}>
-                      <Image src={thumb} alt="" fill sizes="280px" />
+                      {/* petite vignette (fichier léger) servie directement */}
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={thumb} alt="" />
                       <span className={styles.rd}>
                         <Roundel ray="#EDEDFF" water="#63D0DE" />
                       </span>
