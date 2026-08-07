@@ -341,21 +341,14 @@
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
 }
-.platefig:hover .ru,
-.platefig.drawn .ru {
+.platefig:hover .ru {
   opacity: 1;
 }
-.platefig:hover .top,
-.platefig.drawn .top {
+.platefig:hover .top {
   animation: rudraw 1.5s ease forwards;
 }
-.platefig:hover .bot,
-.platefig.drawn .bot {
+.platefig:hover .bot {
   animation: rudraw 1.4s ease 1.5s forwards;
-}
-/* la lueur radiale s'active aussi à la révélation au scroll */
-.platefig.drawn::before {
-  opacity: 1;
 }
 @keyframes rudraw {
   from {

@@ -1,42 +1,18 @@
-"use client";
-
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
 import type { Plaque } from "@/data/plaques";
 import { ondePaths } from "@/data/onde-paths";
 import styles from "@/app/plaques/plaque.module.css";
 
 /**
- * La plaque en fonte + le tracé exact du ru gravé, révélé par « l'eau ».
- * Le tracé se dessine quand la plaque entre à l'écran (fonctionne sur mobile,
- * là où le scan a lieu) et rejoue au survol sur desktop.
+ * La plaque en fonte + le tracé exact du ru gravé, révélé « par l'eau » au
+ * survol (sur mobile, un appui sur la plaque déclenche l'état de survol).
  */
 export default function PlaquePlate({ plaque }: { plaque: Plaque }) {
   const onde = ondePaths[plaque.slug];
-  const ref = useRef<HTMLElement | null>(null);
-  const [drawn, setDrawn] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            setDrawn(true);
-            io.unobserve(e.target);
-          }
-        });
-      },
-      { threshold: 0.4 },
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
 
   return (
     <div>
-      <figure ref={ref} className={`${styles.platefig} ${drawn ? styles.drawn : ""}`}>
+      <figure className={styles.platefig}>
         {plaque.fonte && (
           <Image
             className={styles.plate}
@@ -56,7 +32,7 @@ export default function PlaquePlate({ plaque }: { plaque: Plaque }) {
           </svg>
         )}
       </figure>
-      <div className={styles.hint}>L&apos;eau révèle le tracé du ru gravé ↑</div>
+      <div className={styles.hint}>Survolez : l&apos;eau révèle le tracé du ru gravé ↑</div>
     </div>
   );
 }

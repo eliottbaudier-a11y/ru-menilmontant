@@ -54,6 +54,7 @@ export default function GaleriePage() {
     <>
       <Nav />
 
+      <div className={styles.page}>
       <header className={styles.hero}>
         <div className="eyebrow eau">Libre-service · inventaire des formes</div>
         <h1 className="display">La plaque d&apos;égout, un langage universel</h1>
@@ -96,8 +97,9 @@ export default function GaleriePage() {
         Sources : archives BnF / Gallica &amp; collections diverses — usage pédagogique, projet de
         diplôme. Les localisations indiquées sont données à titre indicatif.
       </p>
+      </div>
 
-      <Footer />
+      <Footer paper />
     </>
   );
 }
