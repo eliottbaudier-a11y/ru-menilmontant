@@ -444,6 +444,43 @@ export default function Map3D() {
 
     const ray = new THREE.Raycaster();
     let hov = -1;
+
+    // double-clic sur une plaque survolée → copie ses coordonnées géographiques
+    let copyTO: ReturnType<typeof setTimeout> | undefined;
+    function fallbackCopy(t: string) {
+      const ta = document.createElement("textarea");
+      ta.value = t;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand("copy");
+      } catch {
+        /* ignoré */
+      }
+      document.body.removeChild(ta);
+    }
+    function copyText(t: string) {
+      if (navigator.clipboard?.writeText) {
+        navigator.clipboard.writeText(t).catch(() => fallbackCopy(t));
+      } else {
+        fallbackCopy(t);
+      }
+    }
+    const onDblClick = () => {
+      if (hov < 0) return;
+      copyText(`${COORD[hov][0]}, ${COORD[hov][1]}`);
+      const co = tipEl.querySelector(".co") as HTMLElement;
+      const cur = hov;
+      co.textContent = "coordonnées copiées ✓";
+      clearTimeout(copyTO);
+      copyTO = setTimeout(() => {
+        if (hov === cur) co.textContent = `${COORD[cur][0]} N · ${COORD[cur][1]} E`;
+      }, 1400);
+    };
+    canvas.addEventListener("dblclick", onDblClick);
+
     function updateHover() {
       ray.setFromCamera(mouse, camera);
       const hits = ray.intersectObjects(plots.map((p) => p.hit), false);
@@ -503,8 +540,10 @@ export default function Map3D() {
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", resize);
       canvas.removeEventListener("pointerdown", onDown);
+      canvas.removeEventListener("dblclick", onDblClick);
       window.removeEventListener("pointerup", onUp);
       window.removeEventListener("pointermove", onMove);
+      clearTimeout(copyTO);
       renderer.dispose();
     };
   }, []);
@@ -519,7 +558,7 @@ export default function Map3D() {
       </div>
       <div className={styles.badge}>carte 3D</div>
       <div className={styles.hint}>
-        <b>Glissez</b> pour tourner (gauche-droite · haut-bas) · <b>survolez</b> une plaque pour la situer
+        <b>Glissez</b> pour tourner · <b>survolez</b> une plaque · <b>double-clic</b> pour copier ses coordonnées
       </div>
       <div ref={tipRef} className={styles.tip}>
         <div className="r" />
