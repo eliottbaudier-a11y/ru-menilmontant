@@ -1,12 +1,14 @@
 import Image from "next/image";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import RainReveal from "@/components/home/RainReveal";
+import PlaqueSlider from "@/components/PlaqueSlider";
+import Map3D from "@/components/Map3D";
 import HomeCollection from "@/components/home/HomeCollection";
+import Reveal from "@/components/Reveal";
 import styles from "./home.module.css";
 
-/** Accueil — structure allégée validée (31/07) :
- *  héros → interactif « la pluie révèle le ru » → collection → footer. */
+/** Accueil — fidèle à la maquette accueil-v3 :
+ *  héros → carrousel des 8 plaques → carte 3D → collection → footer. */
 export default function Home() {
   const nodes = [
     [120, 196],
@@ -23,6 +25,7 @@ export default function Home() {
     <>
       <Nav />
 
+      {/* HÉROS */}
       <header className={styles.hero} id="hero">
         <div className={styles.herobg}>
           <Image
@@ -76,8 +79,29 @@ export default function Home() {
         </div>
       </header>
 
-      <RainReveal />
+      {/* LE PARCOURS — carrousel des 8 plaques */}
+      <div id="parcours" style={{ scrollMarginTop: 86 }}>
+        <PlaqueSlider />
+      </div>
 
+      {/* LA CARTE — spatialisation 3D */}
+      <section id="carte" style={{ scrollMarginTop: 86, background: "var(--encre)", padding: "78px 0 90px" }}>
+        <Reveal style={{ textAlign: "center", padding: "0 6vw" }}>
+          <div className="eyebrow center eau">La carte</div>
+          <h2 className="display" style={{ color: "#EDEDFF", fontSize: "clamp(30px,5vw,64px)" }}>
+            Le ru dans Paris, en volume
+          </h2>
+          <p style={{ maxWidth: 680, margin: "12px auto 0", opacity: 0.82 }}>
+            Tournez la ville (glisser gauche-droite, haut-bas), survolez une plaque pour la situer —
+            des hauteurs de Ménilmontant jusqu&apos;à la Seine.
+          </p>
+        </Reveal>
+        <div style={{ maxWidth: 1500, margin: "34px auto 0", padding: "0 clamp(16px,5vw,70px)" }}>
+          <Map3D />
+        </div>
+      </section>
+
+      {/* MA COLLECTION */}
       <HomeCollection />
 
       <Footer />

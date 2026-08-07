@@ -16,7 +16,13 @@
       "Bash(git mv *)",
       "Bash(mv src/middleware.ts src/proxy.ts)",
       "Bash(node scripts/generate-qr.mjs https://ru-menilmontant.vercel.app)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "Bash(git remote *)",
+      "Bash(git push *)",
+      "Bash(echo \"=== dossier existe ? ===\")",
+      "Read(//c/Users/eliot/Desktop/site PFE 01 08 2026/**)",
+      "Bash(node /tmp/strip.js 'C:/Users/eliot/Desktop/site PFE 01 08 2026/accueil-v3.html')",
+      "Bash(node /tmp/strip.js 'C:/Users/eliot/Desktop/site PFE 01 08 2026/galerie-plaques.html')"
     ]
   }
 }
