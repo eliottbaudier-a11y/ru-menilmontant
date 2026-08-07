@@ -364,6 +364,13 @@ export default function Map3D() {
       i: number;
     };
     const plots: Plot[] = [];
+    // hitbox élargie sur écran tactile (carte dézoomée → plaques petites) :
+    // en glissant le doigt au niveau d'une plaque, le survol se déclenche.
+    const coarsePointer =
+      typeof window !== "undefined" &&
+      typeof window.matchMedia === "function" &&
+      window.matchMedia("(pointer: coarse)").matches;
+    const HIT_R = coarsePointer ? 8 : 4.4;
     ruPts.forEach((pos, i) => {
       const g = new THREE.Group();
       g.position.copy(pos);
@@ -383,7 +390,7 @@ export default function Map3D() {
       halo.rotation.x = -Math.PI / 2;
       halo.position.y = 0.06;
       g.add(halo);
-      const hit = new THREE.Mesh(new THREE.SphereGeometry(4.4, 10, 10), new THREE.MeshBasicMaterial({ visible: false }));
+      const hit = new THREE.Mesh(new THREE.SphereGeometry(HIT_R, 10, 10), new THREE.MeshBasicMaterial({ visible: false }));
       hit.position.y = 11;
       g.add(hit);
       city.add(g);
