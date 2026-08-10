@@ -228,20 +228,25 @@ export default function CollectionClient() {
               const hd = HD_DOWNLOAD[p.slug];
               return (
                 <article key={p.slug} className={`${styles.pcard} ${unlocked ? "" : styles.off}`}>
-                  {unlocked ? (
-                    <div className={styles.pimg}>
-                      {/* petite vignette (fichier léger) servie directement */}
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={thumb} alt="" />
-                      <span className={styles.rd}>
-                        <Roundel ray="#EDEDFF" water="#63D0DE" />
+                  {/* toutes les images sont montrées ; les non débloquées sont grisées
+                      (comme dans le slider Parcours) */}
+                  <div className={`${styles.pimg} ${unlocked ? "" : styles.locked}`}>
+                    {/* petite vignette (fichier léger) servie directement */}
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={thumb} alt="" />
+                    <span className={styles.rd}>
+                      <Roundel ray="#EDEDFF" water="#63D0DE" />
+                    </span>
+                    {!unlocked && (
+                      <span className={styles.lockbadge}>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#F3F1EA" strokeWidth={2}>
+                          <rect x="5" y="11" width="14" height="10" rx="2" />
+                          <path d="M8 11V8a4 4 0 0 1 8 0v3" />
+                        </svg>
+                        à débloquer
                       </span>
-                    </div>
-                  ) : (
-                    <div className={`${styles.pimg} ${styles.locked}`}>
-                      <Roundel ray="#2D308C" water="#2D308C" />
-                    </div>
-                  )}
+                    )}
+                  </div>
                   <div className={styles.pmeta}>
                     <div className={styles.pn}>
                       Plaque {p.roman} · {p.title}
