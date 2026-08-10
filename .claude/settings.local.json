@@ -47,7 +47,11 @@
       "Bash(cp __TRACKED_VAR__/03.jpg public/downloads/plaque-2-canal-saint-martin.jpg)",
       "Bash(rm -f public/img/collection/03.jpg public/img/collection/04.jpg public/img/collection/05.jpg)",
       "Bash(sed -i 's|^        </Reveal>|        </div>|' src/app/galerie/page.tsx)",
-      "Bash(sed -i '/^import Reveal from \"@\\\\/components\\\\/Reveal\";$/d' src/app/galerie/page.tsx)"
+      "Bash(sed -i '/^import Reveal from \"@\\\\/components\\\\/Reveal\";$/d' src/app/galerie/page.tsx)",
+      "Bash(echo \"=== parcours dans le dossier de réf ? ===\")",
+      "Bash(ls -la 'C:/Users/eliot/Desktop/site PFE 01 08 2026/parcours*.html' 'C:/Users/eliot/Desktop/site PFE 01 08 2026/accueil*.html')",
+      "Bash(awk '{print $5,$9}')",
+      "Bash(awk '{print $6,$7,$8,$9}')"
     ]
   }
 }
