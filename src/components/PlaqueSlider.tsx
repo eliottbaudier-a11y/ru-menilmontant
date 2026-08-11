@@ -43,36 +43,46 @@ export default function PlaqueSlider() {
   const go = (n: number) => setIdx((n + plaques.length) % plaques.length);
 
   // --- glissement au doigt (swipe), en plus des flèches ---
-  const drag = useRef({ startX: 0, active: false, moved: false });
+  const drag = useRef({ startX: 0, active: false, moved: false, captured: false });
   const [dragPx, setDragPx] = useState(0);
   const [dragging, setDragging] = useState(false);
 
   const onSliderDown = (e: React.PointerEvent) => {
-    drag.current = { startX: e.clientX, active: true, moved: false };
-    setDragging(true);
+    // on NE capture PAS le pointeur ici : sinon le « click » sur une carte
+    // n'est plus émis et la navigation vers la plaque est cassée.
+    drag.current = { startX: e.clientX, active: true, moved: false, captured: false };
     setPaused(true);
-    try {
-      (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
-    } catch {
-      /* ignoré */
-    }
   };
   const onSliderMove = (e: React.PointerEvent) => {
     if (!drag.current.active) return;
     const dx = e.clientX - drag.current.startX;
-    if (Math.abs(dx) > 6) drag.current.moved = true;
-    setDragPx(dx);
+    // un vrai glissement se confirme au-delà de 10 px → alors seulement on
+    // capture le pointeur et on suit le doigt.
+    if (!drag.current.moved && Math.abs(dx) > 10) {
+      drag.current.moved = true;
+      setDragging(true);
+      try {
+        (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+        drag.current.captured = true;
+      } catch {
+        /* ignoré */
+      }
+    }
+    if (drag.current.moved) setDragPx(dx);
   };
   const onSliderUp = (e: React.PointerEvent) => {
     if (!drag.current.active) return;
     const dx = e.clientX - drag.current.startX;
+    const wasDrag = drag.current.moved;
     drag.current.active = false;
     setDragging(false);
     setDragPx(0);
-    const cw = (sliderRef.current?.clientWidth ?? 0) < 680 ? 300 : CARD;
-    const threshold = Math.min(70, cw * 0.2);
-    if (dx <= -threshold) go(idx + 1);
-    else if (dx >= threshold) go(idx - 1);
+    if (wasDrag) {
+      const cw = (sliderRef.current?.clientWidth ?? 0) < 680 ? 300 : CARD;
+      const threshold = Math.min(70, cw * 0.2);
+      if (dx <= -threshold) go(idx + 1);
+      else if (dx >= threshold) go(idx - 1);
+    }
     window.setTimeout(() => setPaused(false), 500);
   };
 
@@ -117,9 +127,11 @@ export default function PlaqueSlider() {
                   unlocked ? "" : styles.locked
                 }`}
                 onClick={() => {
-                  if (drag.current.moved) return; // c'était un swipe, pas un tap
-                  if (i === idx) router.push(`/plaques/${p.slug}`);
-                  else go(i);
+                  if (drag.current.moved) return; // c'était un swipe, pas un clic
+                  // un clic sur une carte (centrale ou latérale) ouvre sa plaque ;
+                  // on recentre d'abord si ce n'est pas la carte active.
+                  if (i !== idx) go(i);
+                  router.push(`/plaques/${p.slug}`);
                 }}
               >
                 <div className={styles.img}>
