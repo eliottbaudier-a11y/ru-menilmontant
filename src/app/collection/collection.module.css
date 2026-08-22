@@ -379,10 +379,12 @@
   justify-content: center;
 }
 .spin {
+  position: relative;
   width: 180px;
   height: 180px;
   transform-style: preserve-3d;
   animation: spin 7s linear infinite;
+  filter: drop-shadow(0 12px 26px rgba(0, 0, 0, 0.45));
 }
 .spin.locked {
   animation-play-state: paused;
@@ -396,10 +398,22 @@
     transform: rotateY(360deg);
   }
 }
-.spin svg {
+/* les deux faces de la plaque (avant / arrière) */
+.coinFace {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+}
+.coinFace svg {
   width: 100%;
   height: 100%;
-  filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.4));
+}
+/* le corps : disques bleus empilés en profondeur → épaisseur de la plaque */
+.coinEdge {
+  position: absolute;
+  inset: 2px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, #14163f 0%, #2b2e7a 50%, #14163f 100%);
 }
 .reward h3 {
   font-family: var(--font-display), "Anton";
