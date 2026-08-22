@@ -273,11 +273,11 @@ export default function CollectionClient() {
           </div>
         </section>
 
-        {/* récompense */}
+        {/* récompense — partenariat Musée des Égouts de Paris */}
         <section className={styles.sec}>
           <div className={styles.sechead}>
             <h2 className="display">Ma récompense</h2>
-            <span>le NFT du parcours complet</span>
+            <span>en partenariat avec le Musée des Égouts de Paris</span>
           </div>
           <div className={styles.reward}>
             <div className={styles.spinwrap}>
@@ -286,16 +286,23 @@ export default function CollectionClient() {
               </div>
             </div>
             <div>
-              <h3>Le parcours complet</h3>
+              <h3>−50 % au Musée des Égouts</h3>
               <p>
-                Scanne les huit plaques pour débloquer la récompense : la plaque du parcours complet,
-                en 3D — une plaque qui tourne, en édition unique (NFT à venir).
+                Scanne les huit plaques pour débloquer ta récompense : <strong>50 % de réduction
+                sur l&apos;entrée du Musée des Égouts de la Ville de Paris</strong> — pour prolonger
+                le voyage, cette fois sous terre, dans le vrai réseau du ru.
               </p>
               <div className={styles.rprog}>
-                {complete ? "✓ Débloqué — 8 / 8" : `Débloqué à 8/8 — plus que ${TOTAL_PLAQUES - progress} plaques`}
+                {complete
+                  ? "✓ Débloqué — 8 / 8"
+                  : `Débloqué à 8/8 — plus que ${TOTAL_PLAQUES - progress} plaque${
+                      TOTAL_PLAQUES - progress > 1 ? "s" : ""
+                    }`}
               </div>
               <span className={styles.badge}>
-                {complete ? "Récompense débloquée" : `Récompense verrouillée — ${progress}/8`}
+                {complete
+                  ? "Code de réduction : RU-MENIL-50"
+                  : `Réduction verrouillée — ${progress}/8`}
               </span>
             </div>
           </div>
