@@ -23,7 +23,7 @@ const DEMO_UNLOCK = process.env.NEXT_PUBLIC_DEMO_UNLOCK === "true";
 /** Déverrouillage global temporaire (démo/capture) : les 8 plaques sont
  *  ouvertes à tout le monde jusqu'à ce timestamp, puis tout se reverrouille
  *  automatiquement. Mettre 0 pour désactiver. */
-const GLOBAL_UNLOCK_UNTIL = 1787426794000; // 22/08 ~21h26
+const GLOBAL_UNLOCK_UNTIL = 1787427758000; // 22/08 ~21h42
 
 type Store = {
   /** clés (slugs) réellement scannées/débloquées par l'utilisateur */
