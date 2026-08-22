@@ -248,6 +248,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  isolation: isolate;
 }
 .pimg img {
   position: absolute;
@@ -256,6 +257,16 @@
   height: 100%;
   object-fit: cover;
   display: block;
+}
+/* teinte bleue uniforme (garde le détail) — même rendu pour les 8 plaques */
+.pimg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: #2d308c;
+  mix-blend-mode: color;
+  pointer-events: none;
 }
 /* plaque non débloquée : image grisée/assombrie (comme le slider Parcours) */
 .pimg.locked img {
