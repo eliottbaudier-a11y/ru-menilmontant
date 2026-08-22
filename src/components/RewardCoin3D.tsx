@@ -67,6 +67,9 @@ export default function RewardCoin3D({ locked = false }: { locked?: boolean }) {
       x.globalAlpha = 1;
       const t = new THREE.CanvasTexture(cv);
       t.anisotropy = 8;
+      // rotation du dessin de 45° (n'affecte pas le sens de rotation du modèle)
+      t.center.set(0.5, 0.5);
+      t.rotation = Math.PI / 4;
       return t;
     }
 
