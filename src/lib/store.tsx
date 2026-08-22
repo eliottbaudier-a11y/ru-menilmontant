@@ -12,13 +12,18 @@ import {
 import type { User } from "@supabase/supabase-js";
 import { createClient } from "@/lib/supabase/client";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
-import { DEFAULT_UNLOCKED, TOTAL_PLAQUES } from "@/data/plaques";
+import { DEFAULT_UNLOCKED, TOTAL_PLAQUES, plaques } from "@/data/plaques";
 
 const LS_KEY = "ru_scans";
 
 /** Démo : à true, les plaques I/II/III sont débloquées d'office (soutenance
  *  sans scanner sur place). Par défaut false → tout est verrouillé au départ. */
 const DEMO_UNLOCK = process.env.NEXT_PUBLIC_DEMO_UNLOCK === "true";
+
+/** Déverrouillage global temporaire (démo/capture) : les 8 plaques sont
+ *  ouvertes à tout le monde jusqu'à ce timestamp, puis tout se reverrouille
+ *  automatiquement. Mettre 0 pour désactiver. */
+const GLOBAL_UNLOCK_UNTIL = 1787426794000; // 22/08 ~21h26
 
 type Store = {
   /** clés (slugs) réellement scannées/débloquées par l'utilisateur */
@@ -156,6 +161,10 @@ export function AppProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const unlocked = useMemo(() => {
+    // fenêtre de déverrouillage global (démo/capture) : les 8 plaques ouvertes
+    if (GLOBAL_UNLOCK_UNTIL && Date.now() < GLOBAL_UNLOCK_UNTIL) {
+      return plaques.map((p) => p.slug);
+    }
     const base = DEMO_UNLOCK ? DEFAULT_UNLOCKED : [];
     return Array.from(new Set([...base, ...scanned]));
   }, [scanned]);
