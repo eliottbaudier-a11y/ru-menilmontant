@@ -8,12 +8,6 @@ import { createClient } from "@/lib/supabase/client";
 import RewardCoin3D from "@/components/RewardCoin3D";
 import styles from "./collection.module.css";
 
-const PREVIEW: Record<string, string> = {
-  "aux-sources-du-ru": "/img/collection/00.jpg",
-  "saint-martin": "/img/collection/01.jpg",
-  "le-marais": "/img/collection/02.jpg",
-};
-
 // vraies images d'archive HD (public/downloads/) + nom de fichier propre
 const HD_DOWNLOAD: Record<string, { src: string; filename: string }> = {
   "aux-sources-du-ru": {
@@ -225,7 +219,7 @@ export default function CollectionClient() {
           <div className={styles.grid}>
             {plaques.map((p) => {
               const unlocked = isUnlocked(p.slug);
-              const thumb = PREVIEW[p.slug] ?? p.hero;
+              const thumb = `/img/blue/plaque-${p.n}.jpg`; // visuel bleu uniforme
               const hd = HD_DOWNLOAD[p.slug];
               return (
                 <article key={p.slug} className={`${styles.pcard} ${unlocked ? "" : styles.off}`}>

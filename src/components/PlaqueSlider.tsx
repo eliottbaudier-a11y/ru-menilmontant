@@ -135,7 +135,13 @@ export default function PlaqueSlider() {
                 }}
               >
                 <div className={styles.img}>
-                  <Image src={p.hero} alt="" fill sizes="380px" style={{ objectFit: "cover" }} />
+                  <Image
+                    src={`/img/blue/plaque-${p.n}.jpg`}
+                    alt=""
+                    fill
+                    sizes="380px"
+                    style={{ objectFit: "cover" }}
+                  />
                 </div>
                 <div className={styles.ov} />
                 <Roundel unlocked={unlocked} className={styles.roundel} />

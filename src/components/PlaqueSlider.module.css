@@ -58,7 +58,6 @@
 .card .img {
   position: absolute;
   inset: 0;
-  isolation: isolate;
 }
 .card .img :global(img) {
   object-fit: cover;
@@ -69,15 +68,6 @@
 }
 .card.locked .img :global(img) {
   filter: grayscale(0.5) brightness(0.7);
-}
-/* teinte bleue uniforme des visuels du carrousel (garde le détail) */
-.card .img::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: #2d308c;
-  mix-blend-mode: color;
-  pointer-events: none;
 }
 .card .ov {
   position: absolute;
