@@ -5,6 +5,7 @@ import Nav from "@/components/Nav";
 import { plaques, TOTAL_PLAQUES } from "@/data/plaques";
 import { useStore } from "@/lib/store";
 import { createClient } from "@/lib/supabase/client";
+import RewardCoin3D from "@/components/RewardCoin3D";
 import styles from "./collection.module.css";
 
 const PREVIEW: Record<string, string> = {
@@ -281,27 +282,7 @@ export default function CollectionClient() {
           </div>
           <div className={styles.reward}>
             <div className={styles.spinwrap}>
-              <div className={`${styles.spin} ${complete ? "" : styles.locked}`}>
-                {/* corps de la plaque : disques empilés en Z pour l'épaisseur */}
-                {Array.from({ length: 18 }).map((_, i) => (
-                  <span
-                    key={i}
-                    className={styles.coinEdge}
-                    style={{ transform: `translateZ(${((i / 17) - 0.5) * 22}px)` }}
-                  />
-                ))}
-                {/* face avant */}
-                <div className={styles.coinFace} style={{ transform: "translateZ(11px)" }}>
-                  <Roundel ray="#63D0DE" water="#8CEBF5" gradient />
-                </div>
-                {/* face arrière */}
-                <div
-                  className={styles.coinFace}
-                  style={{ transform: "rotateY(180deg) translateZ(11px)" }}
-                >
-                  <Roundel ray="#63D0DE" water="#8CEBF5" gradient />
-                </div>
-              </div>
+              <RewardCoin3D locked={!complete} />
             </div>
             <div>
               <h3>−50 % au Musée des Égouts</h3>
