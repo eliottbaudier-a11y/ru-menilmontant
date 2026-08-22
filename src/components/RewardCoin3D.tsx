@@ -48,20 +48,21 @@ export default function RewardCoin3D({ locked = false }: { locked?: boolean }) {
         x.lineTo(C + 40 * k * Math.cos(a), C + 40 * k * Math.sin(a));
         x.stroke();
       }
+      // deux vagues « eau » horizontales (début et fin à la même hauteur)
       x.lineCap = "round";
       x.strokeStyle = "#8CEBF5";
       x.lineWidth = 2.6 * k;
       x.beginPath();
-      x.moveTo(22 * k, 44 * k);
-      x.bezierCurveTo(34 * k, 38 * k, 40 * k, 54 * k, 52 * k, 48 * k);
-      x.bezierCurveTo(64 * k, 42 * k, 70 * k, 42 * k, 80 * k, 52 * k);
+      x.moveTo(20 * k, 47 * k);
+      x.bezierCurveTo(32 * k, 39 * k, 43 * k, 39 * k, 51 * k, 47 * k);
+      x.bezierCurveTo(59 * k, 55 * k, 70 * k, 55 * k, 80 * k, 47 * k);
       x.stroke();
       x.globalAlpha = 0.7;
       x.lineWidth = 1.7 * k;
       x.beginPath();
-      x.moveTo(26 * k, 60 * k);
-      x.bezierCurveTo(36 * k, 54 * k, 44 * k, 66 * k, 56 * k, 60 * k);
-      x.bezierCurveTo(68 * k, 54 * k, 72 * k, 56 * k, 78 * k, 62 * k);
+      x.moveTo(24 * k, 60 * k);
+      x.bezierCurveTo(34 * k, 53 * k, 44 * k, 53 * k, 52 * k, 60 * k);
+      x.bezierCurveTo(60 * k, 67 * k, 70 * k, 67 * k, 76 * k, 60 * k);
       x.stroke();
       x.globalAlpha = 1;
       const t = new THREE.CanvasTexture(cv);
@@ -100,12 +101,12 @@ export default function RewardCoin3D({ locked = false }: { locked?: boolean }) {
 
     // cylindre épais = la plaque. Axe Y → on le bascule pour que la face regarde
     // la caméra, puis on le fait tourner sur l'axe vertical (on voit la tranche).
-    const geo = new THREE.CylinderGeometry(1, 1, 0.22, 96, 1, false);
+    const geo = new THREE.CylinderGeometry(1, 1, 0.15, 96, 1, false);
     const coin = new THREE.Mesh(geo, [edgeMat, faceMat, faceMat]);
     coin.rotation.x = Math.PI / 2;
     const group = new THREE.Group();
     group.add(coin);
-    group.rotation.x = -0.28; // légère plongée pour révéler l'épaisseur
+    group.rotation.x = -0.18; // légère plongée pour révéler l'épaisseur
     scene.add(group);
 
     function resize() {
