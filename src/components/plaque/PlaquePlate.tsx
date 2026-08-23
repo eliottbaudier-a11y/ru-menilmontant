@@ -23,6 +23,11 @@ export default function PlaquePlate({ plaque }: { plaque: Plaque }) {
             sizes="(max-width:820px) 90vw, 430px"
           />
         )}
+        {/* zone QR gravée, révélée « par la pluie » au survol, sous le tracé du ru */}
+        <div className={styles.qr} aria-hidden="true">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={`/qr/reveal/plaque-${plaque.n}.svg`} alt="" />
+        </div>
         {onde && (
           <svg className={styles.onde} viewBox="0 0 100 100" preserveAspectRatio="none">
             <path className={`${styles.ru} ${styles.top}`} pathLength={1} d={onde.top} />
@@ -32,7 +37,9 @@ export default function PlaquePlate({ plaque }: { plaque: Plaque }) {
           </svg>
         )}
       </figure>
-      <div className={styles.hint}>Survolez : l&apos;eau révèle le tracé du ru gravé ↑</div>
+      <div className={styles.hint}>
+        Survolez : la pluie révèle le tracé du ru <em>et</em> le QR code gravés ↑
+      </div>
     </div>
   );
 }
