@@ -23,9 +23,10 @@ export default function PlaquePlate({ plaque }: { plaque: Plaque }) {
             sizes="(max-width:820px) 90vw, 430px"
           />
         )}
-        {/* zone QR gravée, révélée « par la pluie » au survol. Le QR remplit un
-            grand disque (jusqu'aux lettres) MOINS le couloir du ru (saignée) et
-            MOINS la fente noire centrale → deux lobes de part et d'autre du tracé. */}
+        {/* zone QR gravée, révélée « par la pluie » au survol. Le masque est
+            dérivé directement de l'image de la plaque (public/qr/reveal/mask-N.png) :
+            le QR ne s'affiche QUE sur le béton clair, jamais sur le sillon ni la
+            fente (marge de sécurité incluse). */}
         <svg
           className={styles.qr}
           viewBox="0 0 100 100"
@@ -33,33 +34,23 @@ export default function PlaquePlate({ plaque }: { plaque: Plaque }) {
           aria-hidden="true"
         >
           <defs>
-            <radialGradient id={`ring-${plaque.n}`} gradientUnits="userSpaceOnUse" cx="50" cy="50" r="32">
-              <stop offset="0" stopColor="#fff" />
-              <stop offset="0.9" stopColor="#fff" />
-              <stop offset="1" stopColor="#000" />
-            </radialGradient>
             <mask id={`qrmask-${plaque.n}`} maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="100">
-              <circle cx="50" cy="50" r="32" fill={`url(#ring-${plaque.n})`} />
-              {/* dégagement propre autour de la fente : poche ovale (arque au-dessus
-                  de la fente et se fond avec le couloir du ru) */}
-              <ellipse cx="50" cy="49" rx="11.5" ry="7.5" fill="#000" />
-              {/* saignée du ru : couloir libre autour du tracé */}
-              {onde && (
-                <>
-                  <path d={onde.top} fill="none" stroke="#000" strokeWidth={7} strokeLinecap="round" strokeLinejoin="round" />
-                  {onde.bot && (
-                    <path d={onde.bot} fill="none" stroke="#000" strokeWidth={7} strokeLinecap="round" strokeLinejoin="round" />
-                  )}
-                </>
-              )}
+              <image
+                href={`/qr/reveal/mask-${plaque.n}.png`}
+                x="0"
+                y="0"
+                width="100"
+                height="100"
+                preserveAspectRatio="none"
+              />
             </mask>
           </defs>
           <image
             href={`/qr/reveal/plaque-${plaque.n}.svg`}
-            x="18"
-            y="18"
-            width="64"
-            height="64"
+            x="0"
+            y="0"
+            width="100"
+            height="100"
             preserveAspectRatio="none"
             mask={`url(#qrmask-${plaque.n})`}
           />
