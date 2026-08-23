@@ -10,6 +10,7 @@ const LINKS = [
   { href: "/carte", label: "La Carte" },
   { href: "/galerie", label: "Galerie" },
   { href: "/collection", label: "Ma Collection" },
+  { href: "/a-propos", label: "À propos" },
 ];
 
 /** Barre de navigation fixe, mix-blend-difference (lisible sur tout fond). */
