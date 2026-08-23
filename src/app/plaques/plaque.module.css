@@ -321,11 +321,11 @@
    à la couleur du ru, sous le tracé (rendu graphique, non scannable) */
 .platefig .qr {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 62%;
-  aspect-ratio: 1;
-  transform: translate(-50%, -50%) scale(0.95);
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: scale(0.96);
+  transform-origin: center;
   z-index: 2;
   opacity: 0;
   pointer-events: none;
@@ -338,7 +338,7 @@
 }
 .platefig:hover .qr {
   opacity: 0.9;
-  transform: translate(-50%, -50%) scale(1);
+  transform: scale(1);
   transition-delay: 0.3s;
 }
 .platefig .plate {
