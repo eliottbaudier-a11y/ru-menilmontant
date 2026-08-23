@@ -357,8 +357,8 @@
 .ru {
   fill: none;
   stroke: var(--eau);
-  stroke-width: 1.25;
-  stroke-linecap: round;
+  stroke-width: 0.85;
+  stroke-linecap: butt;
   stroke-linejoin: round;
   filter: drop-shadow(0 0 3px var(--eau)) drop-shadow(0 0 8px rgba(99, 208, 222, 0.7));
   opacity: 0;
