@@ -40,8 +40,9 @@ export default function PlaquePlate({ plaque }: { plaque: Plaque }) {
             </radialGradient>
             <mask id={`qrmask-${plaque.n}`} maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="100">
               <circle cx="50" cy="50" r="32" fill={`url(#ring-${plaque.n})`} />
-              {/* évidement de la fente centrale : le QR ne la recouvre pas */}
-              <rect x="40.5" y="43.5" width="19" height="11" rx="3" ry="3" fill="#000" />
+              {/* dégagement propre autour de la fente : poche ovale (arque au-dessus
+                  de la fente et se fond avec le couloir du ru) */}
+              <ellipse cx="50" cy="49" rx="11.5" ry="7.5" fill="#000" />
               {/* saignée du ru : couloir libre autour du tracé */}
               {onde && (
                 <>
