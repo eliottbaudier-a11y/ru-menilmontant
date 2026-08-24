@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import Reveal from "@/components/Reveal";
 import styles from "./galerie.module.css";
 
 export const metadata: Metadata = {
@@ -56,13 +57,15 @@ export default function GaleriePage() {
 
       <div className={styles.page}>
       <header className={styles.hero}>
-        <div className="eyebrow eau">Libre-service · inventaire des formes</div>
-        <h1 className="display">La plaque d&apos;égout, un langage universel</h1>
-        <p className={styles.intro}>
-          Objet banal du trottoir, la plaque d&apos;égout est partout, et partout différente.
-          Motifs, matériaux, inscriptions : chaque ville, chaque époque y inscrit sa signature.
-          Survolez pour révéler leurs couleurs.
-        </p>
+        <Reveal>
+          <div className="eyebrow eau">Libre-service · inventaire des formes</div>
+          <h1 className="display">La plaque d&apos;égout, un langage universel</h1>
+          <p className={styles.intro}>
+            Objet banal du trottoir, la plaque d&apos;égout est partout, et partout différente.
+            Motifs, matériaux, inscriptions : chaque ville, chaque époque y inscrit sa signature.
+            Survolez pour révéler leurs couleurs.
+          </p>
+        </Reveal>
       </header>
 
       <section className={styles.sec}>

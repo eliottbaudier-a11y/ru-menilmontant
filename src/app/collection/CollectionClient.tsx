@@ -6,6 +6,7 @@ import { plaques, TOTAL_PLAQUES } from "@/data/plaques";
 import { useStore } from "@/lib/store";
 import { createClient } from "@/lib/supabase/client";
 import RewardCoin3D from "@/components/RewardCoin3D";
+import Reveal from "@/components/Reveal";
 import styles from "./collection.module.css";
 
 // vraies images d'archive HD (public/downloads/) + nom de fichier propre
@@ -217,12 +218,17 @@ export default function CollectionClient() {
             <span>télécharge l&apos;image HD de chaque plaque débloquée</span>
           </div>
           <div className={styles.grid}>
-            {plaques.map((p) => {
+            {plaques.map((p, i) => {
               const unlocked = isUnlocked(p.slug);
               const thumb = `/img/blue/plaque-${p.n}.jpg`; // visuel bleu uniforme
               const hd = HD_DOWNLOAD[p.slug];
               return (
-                <article key={p.slug} className={`${styles.pcard} ${unlocked ? "" : styles.off}`}>
+                <Reveal
+                  as="article"
+                  key={p.slug}
+                  delay={(i % 4) * 80}
+                  className={`${styles.pcard} ${unlocked ? "" : styles.off}`}
+                >
                   {/* toutes les images sont montrées ; les non débloquées sont grisées
                       (comme dans le slider Parcours) */}
                   <div className={`${styles.pimg} ${unlocked ? "" : styles.locked}`}>
@@ -262,7 +268,7 @@ export default function CollectionClient() {
                       </span>
                     )}
                   </div>
-                </article>
+                </Reveal>
               );
             })}
           </div>
@@ -274,7 +280,7 @@ export default function CollectionClient() {
             <h2 className="display">Ma récompense</h2>
             <span>en partenariat avec le Musée des Égouts de Paris</span>
           </div>
-          <div className={styles.reward}>
+          <Reveal className={styles.reward}>
             <div className={styles.spinwrap}>
               <RewardCoin3D locked={!complete} />
             </div>
@@ -298,7 +304,7 @@ export default function CollectionClient() {
                   : `Réduction verrouillée · ${progress}/8`}
               </span>
             </div>
-          </div>
+          </Reveal>
         </section>
 
         <footer className={styles.foot}>

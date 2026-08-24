@@ -146,6 +146,25 @@ img {
   }
 }
 
+/* ---- entrée de page (template.tsx) : fondu doux à chaque navigation ----
+   opacité seule (pas de transform) pour ne pas casser la nav en position fixe */
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.pageEnter {
+  animation: pageEnter 0.45s ease both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .pageEnter {
+    animation: none;
+  }
+}
+
 /* ---- bouton / CTA ---- */
 .cta {
   display: inline-flex;

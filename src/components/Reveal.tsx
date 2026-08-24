@@ -40,7 +40,13 @@ export default function Reveal({
       { threshold: 0, rootMargin: "0px 0px -8% 0px" },
     );
     io.observe(el);
-    return () => io.disconnect();
+    // filet de sécurité : si l'observer ne se déclenche jamais (cas limites
+    // mobile / blocs très hauts), on affiche quand même le bloc après un délai.
+    const failsafe = window.setTimeout(() => setShown(true), 1600);
+    return () => {
+      io.disconnect();
+      window.clearTimeout(failsafe);
+    };
   }, []);
 
   return (

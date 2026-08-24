@@ -98,8 +98,8 @@ export default function AProposPage() {
             <h2 className="display">Scanner, découvrir, collectionner</h2>
           </Reveal>
           <div className={styles.steps}>
-            {STEPS.map((s) => (
-              <Reveal key={s.n} className={styles.step}>
+            {STEPS.map((s, i) => (
+              <Reveal key={s.n} className={styles.step} delay={i * 110}>
                 <span className={styles.num}>{s.n}</span>
                 <h3>{s.t}</h3>
                 <p>{s.p}</p>
