@@ -77,9 +77,8 @@ export default function AProposPage() {
               code</strong> jusque-là invisible.
             </p>
             <p>
-              Sans pluie, pas de QR — donc pas d&apos;accès. La météo devient la clé : elle
-              transforme un objet banal en porte d&apos;entrée, et rend la rencontre rare et
-              désirable.
+              Sans pluie, pas de QR, donc pas d&apos;accès. C&apos;est la météo qui décide : elle
+              change un objet banal du trottoir en point d&apos;entrée, et rend la rencontre rare.
             </p>
           </Reveal>
           <Reveal className={styles.plateWrap}>

@@ -118,7 +118,7 @@ export const plaques: Plaque[] = [
         image: "/img/plaque-1/05.jpg",
         paragraphs: [
           "Au XIXᵉ siècle, Paris s'étend. Les champs sont lotis, les chemins deviennent des rues, et le ru est progressivement enfermé sous terre. La rivière disparaît des regards, mais pas du territoire : quand la pluie tombe sur Belleville, l'eau emprunte encore sensiblement le même chemin qu'autrefois.",
-          "Le ru a disparu de la surface, mais son tracé n'a jamais cessé d'exister. En construisant ses égouts, Paris s'appuie sur les vallons naturels : une partie des collecteurs souterrains suit le parcours façonné pendant des siècles par le ruisseau. Cette petite rivière oubliée a contribué à dessiner les fondations de l'assainissement parisien moderne.",
+          "Le ru a disparu de la surface, mais son tracé n'a jamais cessé d'exister. En construisant ses égouts, Paris s'appuie sur les vallons naturels : une partie des collecteurs souterrains suit encore le chemin creusé pendant des siècles par le ruisseau.",
         ],
       },
       quote: {
@@ -128,9 +128,9 @@ export const plaques: Plaque[] = [
       object: {
         title: "Une gravure dans le béton",
         paragraphs: [
-          "Le principe d'origine — une peinture hydrochromique révélée par la pluie — demeure l'idée fondatrice de ce projet. Ici, cette intention prend une forme plus durable et tangible : une plaque gravée, creusée dans le béton et intégrée au sol de la ville.",
-          "Le tracé du ru et la cartographie de Paris sont incisés dans la matière. À chaque pluie, l'eau s'infiltre dans les creux et révèle progressivement le dessin. Le réseau oublié réapparaît alors sous les pas des passants, donnant l'impression que le cours d'eau reprend forme et retrouve son chemin à travers la ville.",
-          "Cette plaque transforme la pluie en révélateur de mémoire. Elle fait émerger un paysage enfoui et invite à porter un nouveau regard sur le territoire, en laissant réapparaître, le temps d'une averse, la présence discrète mais persistante du ru dans le paysage urbain.",
+          "Au départ, l'idée était une peinture hydrochromique qui apparaît sous la pluie. Pour le diplôme, elle prend une forme plus durable : une plaque gravée dans le béton, posée au sol.",
+          "Le tracé du ru et la carte de Paris sont incisés dans la matière. Quand il pleut, l'eau se loge dans les creux et fait ressortir le dessin. Le réseau oublié réapparaît sous les pas, comme si le ruisseau reprenait son chemin dans la ville.",
+          "La pluie sert de révélateur : le temps d'une averse, un paysage enfoui remonte à la surface, et le ru redevient visible dans la rue.",
         ],
       },
     },
@@ -187,9 +187,9 @@ export const plaques: Plaque[] = [
       object: {
         title: "Une mémoire dans le béton",
         paragraphs: [
-          "Le principe d'origine — une peinture hydrochromique révélée par la pluie — demeure l'idée fondatrice de ce projet. Ici, cette intention prend une forme plus durable et tangible : une plaque gravée, creusée dans le béton et intégrée au sol de la ville.",
-          "Le tracé du ru et la cartographie de Paris sont incisés dans la matière. À chaque pluie, l'eau s'infiltre dans les creux et révèle progressivement le dessin. Le réseau oublié réapparaît alors sous les pas des passants, donnant l'impression que le cours d'eau reprend forme et retrouve son chemin à travers la ville.",
-          "Cette plaque transforme la pluie en révélateur de mémoire. Elle fait émerger un paysage enfoui et invite à porter un nouveau regard sur le territoire, en laissant réapparaître, le temps d'une averse, la présence discrète mais persistante du ru dans le paysage urbain.",
+          "Au départ, l'idée était une peinture hydrochromique qui apparaît sous la pluie. Pour le diplôme, elle prend une forme plus durable : une plaque gravée dans le béton, posée au sol.",
+          "Le tracé du ru et la carte de Paris sont incisés dans la matière. Quand il pleut, l'eau se loge dans les creux et fait ressortir le dessin. Le réseau oublié réapparaît sous les pas, comme si le ruisseau reprenait son chemin dans la ville.",
+          "La pluie sert de révélateur : le temps d'une averse, un paysage enfoui remonte à la surface, et le ru redevient visible dans la rue.",
         ],
       },
     },
@@ -246,9 +246,9 @@ export const plaques: Plaque[] = [
       object: {
         title: "Une gravure dans le béton",
         paragraphs: [
-          "Le principe d'origine — une peinture hydrochromique révélée par la pluie — demeure l'idée fondatrice de ce projet. Ici, cette intention prend une forme plus durable et tangible : une plaque gravée, creusée dans le béton et intégrée au sol de la ville.",
-          "Le tracé du ru et la cartographie de Paris sont incisés dans la matière. À chaque pluie, l'eau s'infiltre dans les creux et révèle progressivement le dessin. Le réseau oublié réapparaît alors sous les pas des passants, donnant l'impression que le cours d'eau reprend forme et retrouve son chemin à travers la ville.",
-          "Cette plaque transforme la pluie en révélateur de mémoire. Elle fait émerger un paysage enfoui et invite à porter un nouveau regard sur le territoire, en laissant réapparaître, le temps d'une averse, la présence discrète mais persistante du ru dans le paysage urbain.",
+          "Au départ, l'idée était une peinture hydrochromique qui apparaît sous la pluie. Pour le diplôme, elle prend une forme plus durable : une plaque gravée dans le béton, posée au sol.",
+          "Le tracé du ru et la carte de Paris sont incisés dans la matière. Quand il pleut, l'eau se loge dans les creux et fait ressortir le dessin. Le réseau oublié réapparaît sous les pas, comme si le ruisseau reprenait son chemin dans la ville.",
+          "La pluie sert de révélateur : le temps d'une averse, un paysage enfoui remonte à la surface, et le ru redevient visible dans la rue.",
         ],
       },
     },
