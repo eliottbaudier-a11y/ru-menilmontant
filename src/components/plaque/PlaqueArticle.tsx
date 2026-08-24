@@ -34,13 +34,13 @@ export default function PlaqueArticle({ plaque }: { plaque: Plaque }) {
           <span className={styles.pulse} /> Plaque scannée · bienvenue dans le ru
         </div>
         <div className={styles.heroInner}>
-          <div className={styles.kicker}>
+          <div className={`${styles.kicker} anim-rise`}>
             <span className={styles.pill}>Plaque {plaque.roman} / VIII</span> {plaque.quartier} ·{" "}
             {plaque.arrondissement}
           </div>
-          <h1 className="display">{plaque.title}</h1>
-          <p className={styles.accroche}>{plaque.subtitle}</p>
-          <p className={styles.herocred}>{c.heroCredit}</p>
+          <h1 className="display anim-rise anim-d1">{plaque.title}</h1>
+          <p className={`${styles.accroche} anim-rise anim-d2`}>{plaque.subtitle}</p>
+          <p className={`${styles.herocred} anim-rise anim-d3`}>{c.heroCredit}</p>
         </div>
       </header>
 
