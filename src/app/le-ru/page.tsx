@@ -28,7 +28,7 @@ export default function LeRuPage() {
       {/* définition */}
       <section className={`paper ${styles.sec}`}>
         <div className={`${styles.wrap} ${styles.grid}`}>
-          <Reveal>
+          <Reveal className="rv-text">
             <div className="eyebrow">Définition</div>
             <h2 className="display">Un ru, c&apos;est un ruisseau</h2>
             <p>
@@ -42,7 +42,7 @@ export default function LeRuPage() {
               aujourd&apos;hui disparus sous la ville.
             </p>
           </Reveal>
-          <Reveal className={styles.figure}>
+          <Reveal className={`${styles.figure} rv-img`}>
             <Image src="/img/le-ru/00.jpg" alt="" fill sizes="(max-width:820px) 100vw, 560px" style={{ objectFit: "cover" }} />
             <figcaption className={styles.figcap}>
               La Bièvre à ciel ouvert, dans les rues des tanneurs : un ru dans la ville.
@@ -54,11 +54,11 @@ export default function LeRuPage() {
       {/* le ru de Ménilmontant */}
       <section className={styles.sec}>
         <div className={`${styles.wrap} ${styles.grid} ${styles.rev}`}>
-          <Reveal className={styles.figure}>
+          <Reveal className={`${styles.figure} rv-img`}>
             <Image src="/img/le-ru/01.jpg" alt="" fill sizes="(max-width:820px) 100vw, 560px" style={{ objectFit: "cover" }} />
             <figcaption className={styles.figcap}>Le ru enfoui, devenu galerie sous la ville.</figcaption>
           </Reveal>
-          <Reveal>
+          <Reveal className="rv-text">
             <div className="eyebrow eau">Le ru de Ménilmontant</div>
             <h2 className="display">De Belleville à la Seine</h2>
             <p>
@@ -89,7 +89,7 @@ export default function LeRuPage() {
       {/* le choix */}
       <section className={`paper ${styles.sec}`}>
         <div className={`${styles.wrap} ${styles.grid}`}>
-          <Reveal>
+          <Reveal className="rv-text">
             <div className="eyebrow">Le choix</div>
             <h2 className="display">Pourquoi ce ruisseau</h2>
             <p>
@@ -112,7 +112,7 @@ export default function LeRuPage() {
               relie le ru d&apos;hier au réseau d&apos;aujourd&apos;hui.
             </p>
           </Reveal>
-          <Reveal className={styles.figure}>
+          <Reveal className={`${styles.figure} rv-img`}>
             <Image src="/img/le-ru/02.jpg" alt="" fill sizes="(max-width:820px) 100vw, 560px" style={{ objectFit: "cover" }} />
             <figcaption className={styles.figcap}>
               «&nbsp;Ruisseau de Paris&nbsp;», l&apos;eau qui court encore dans le caniveau (photo Pierre Boucher).

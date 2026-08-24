@@ -198,6 +198,50 @@ img {
   }
 }
 
+/* ============================================================
+   TEST animations de blocs (page « Le Ru ») — pilotées par le
+   toggle .in du composant Reveal. À généraliser si validé.
+   ============================================================ */
+
+/* Blocs IMAGE : révélation en volet montant (bas → haut) + léger dézoom.
+   On neutralise la montée/opacité de base .reveal pour ne garder que le clip. */
+.reveal.rv-img {
+  opacity: 1;
+  transform: none;
+  overflow: hidden;
+  clip-path: inset(102% 0 0 0 round 6px);
+  transition: clip-path 0.95s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.rv-img.in {
+  clip-path: inset(0 0 0 0 round 6px);
+}
+.reveal.rv-img img {
+  transform: scale(1.14);
+  transition: transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.rv-img.in img {
+  transform: scale(1);
+}
+
+/* Blocs TEXTE : le titre se démasque (clip haut → bas) en plus de la montée. */
+.reveal.rv-text :is(h1, h2) {
+  clip-path: inset(0 0 110% 0);
+  transition: clip-path 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.08s;
+}
+.reveal.rv-text.in :is(h1, h2) {
+  clip-path: inset(0 0 0 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal.rv-img,
+  .reveal.rv-img img,
+  .reveal.rv-text :is(h1, h2) {
+    clip-path: none;
+    transform: none;
+    transition: none;
+  }
+}
+
 /* ---- bouton / CTA ---- */
 .cta {
   display: inline-flex;
