@@ -49,7 +49,7 @@ export default function AProposPage() {
 
       {/* 1 — L'intrigue (papier) */}
       <section className={`paper ${styles.sec}`}>
-        <Reveal className={`${styles.wrap} ${styles.prose}`}>
+        <Reveal className={`${styles.wrap} ${styles.prose} rv-text`}>
           <div className="eyebrow">L&apos;intrigue</div>
           <h2 className="display">Une plaque qui attend la pluie</h2>
           <p>
@@ -67,7 +67,7 @@ export default function AProposPage() {
       {/* 2 — Le déclencheur (bleu) — plaque interactive */}
       <section className={styles.sec}>
         <div className={`${styles.wrap} ${styles.grid}`}>
-          <Reveal>
+          <Reveal className="rv-text">
             <div className="eyebrow eau">Le déclencheur</div>
             <h2 className="display">La pluie révèle</h2>
             <p>
@@ -93,13 +93,13 @@ export default function AProposPage() {
       {/* 3 — Le parcours (papier) — 3 étapes */}
       <section className={`paper ${styles.sec}`}>
         <div className={styles.wrap}>
-          <Reveal className={styles.stepsHead}>
+          <Reveal className={`${styles.stepsHead} rv-text`}>
             <div className="eyebrow center">Le parcours</div>
             <h2 className="display">Scanner, découvrir, collectionner</h2>
           </Reveal>
           <div className={styles.steps}>
             {STEPS.map((s, i) => (
-              <Reveal key={s.n} className={styles.step} delay={i * 110}>
+              <Reveal key={s.n} className={`${styles.step} rv-text`} delay={i * 110}>
                 <span className={styles.num}>{s.n}</span>
                 <h3>{s.t}</h3>
                 <p>{s.p}</p>
@@ -111,7 +111,7 @@ export default function AProposPage() {
 
       {/* 4 — La récompense (bleu) */}
       <section className={styles.sec}>
-        <Reveal className={`${styles.wrap} ${styles.reward}`}>
+        <Reveal className={`${styles.wrap} ${styles.reward} rv-text`}>
           <div className="eyebrow center eau">La récompense</div>
           <h2 className="display">Au bout du parcours</h2>
           <p>

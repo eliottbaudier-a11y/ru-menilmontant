@@ -47,11 +47,11 @@ export default function PlaqueArticle({ plaque }: { plaque: Plaque }) {
       {/* intro + duo */}
       <section className={`paper ${styles.sec}`}>
         <div className={`${styles.wrap} ${styles.intro}`}>
-          <Reveal>
+          <Reveal className="rv-text">
             <div className="eyebrow">{c.intro.eyebrow}</div>
             <h2 className="display">{c.intro.title}</h2>
           </Reveal>
-          <Reveal>
+          <Reveal className="rv-text">
             <p className={styles.lead}>{c.intro.lead}</p>
             {c.intro.paragraphs.map((p, i) => (
               <p key={i}>{p}</p>
@@ -72,10 +72,10 @@ export default function PlaqueArticle({ plaque }: { plaque: Plaque }) {
 
       {/* bande image + texte */}
       <section className={styles.band}>
-        <div className={styles.img}>
+        <Reveal className={`${styles.img} rv-img`}>
           <Image src={c.band.image} alt="" fill sizes="(max-width:820px) 100vw, 55vw" style={{ objectFit: "cover" }} />
-        </div>
-        <Reveal className={styles.txt}>
+        </Reveal>
+        <Reveal className={`${styles.txt} rv-text`}>
           <div className="eyebrow eau">{c.band.eyebrow}</div>
           <h3 className="display">{c.band.title}</h3>
           {c.band.paragraphs.map((p, i) => (
@@ -96,7 +96,7 @@ export default function PlaqueArticle({ plaque }: { plaque: Plaque }) {
       <section className={`paper ${styles.sec}`}>
         <div className={`${styles.wrap} ${styles.plaqueobj}`}>
           <PlaquePlate plaque={plaque} />
-          <Reveal>
+          <Reveal className="rv-text">
             <div className="eyebrow">L&apos;objet</div>
             <h3 className="display">{c.object.title}</h3>
             {c.object.paragraphs.map((p, i) => (
@@ -108,7 +108,7 @@ export default function PlaqueArticle({ plaque }: { plaque: Plaque }) {
 
       {/* fiche technique */}
       <section className={`paper ${styles.sec}`} style={{ paddingBottom: 36 }}>
-        <Reveal className={styles.wrap}>
+        <Reveal className={`${styles.wrap} rv-text`}>
           <div className="eyebrow">Fiche technique</div>
           <h3 className="display" style={{ fontSize: "clamp(26px,3vw,44px)" }}>
             Plaque {plaque.roman} · caractéristiques
@@ -129,7 +129,7 @@ export default function PlaqueArticle({ plaque }: { plaque: Plaque }) {
 
       {/* situer sur le tracé */}
       <section className={`paper ${styles.sec}`} style={{ paddingTop: 0 }}>
-        <Reveal className={`${styles.wrap} ${styles.locate}`}>
+        <Reveal className={`${styles.wrap} ${styles.locate} rv-text`}>
           <div className="eyebrow">Situer</div>
           <h3 className="display" style={{ fontSize: "clamp(26px,3vw,44px)" }}>
             Le point {plaque.roman} sur le tracé
@@ -143,7 +143,7 @@ export default function PlaqueArticle({ plaque }: { plaque: Plaque }) {
       {/* rappel collection + nav plaque */}
       <section className={styles.sec}>
         <div className={`${styles.wrap} ${styles.collec}`}>
-          <Reveal>
+          <Reveal className="rv-text">
             <div className="eyebrow center eau">Ma collection</div>
             <h2 className="display">Plaque {plaque.roman} débloquée</h2>
             <p className={styles.collecProg}>
@@ -151,7 +151,7 @@ export default function PlaqueArticle({ plaque }: { plaque: Plaque }) {
               ({TOTAL_PLAQUES} au total).
             </p>
           </Reveal>
-          <Reveal>
+          <Reveal className="rv-text">
             <CollectionGrid linkUnlocked />
           </Reveal>
         </div>

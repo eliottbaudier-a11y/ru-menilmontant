@@ -224,18 +224,18 @@ img {
 }
 
 /* Blocs TEXTE : le titre se démasque (clip haut → bas) en plus de la montée. */
-.reveal.rv-text :is(h1, h2) {
+.reveal.rv-text :is(h1, h2, h3) {
   clip-path: inset(0 0 110% 0);
   transition: clip-path 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.08s;
 }
-.reveal.rv-text.in :is(h1, h2) {
+.reveal.rv-text.in :is(h1, h2, h3) {
   clip-path: inset(0 0 0 0);
 }
 
 @media (prefers-reduced-motion: reduce) {
   .reveal.rv-img,
   .reveal.rv-img img,
-  .reveal.rv-text :is(h1, h2) {
+  .reveal.rv-text :is(h1, h2, h3) {
     clip-path: none;
     transform: none;
     transition: none;
