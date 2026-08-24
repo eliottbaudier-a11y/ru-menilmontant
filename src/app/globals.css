@@ -129,10 +129,10 @@ img {
 /* ---- révélation au scroll ---- */
 .reveal {
   opacity: 0;
-  transform: translateY(30px);
+  transform: translateY(24px);
   transition:
-    opacity 1s ease,
-    transform 1s cubic-bezier(0.2, 0.7, 0.2, 1);
+    opacity 0.7s ease,
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .reveal.in {
   opacity: 1;
@@ -162,6 +162,39 @@ img {
 @media (prefers-reduced-motion: reduce) {
   .pageEnter {
     animation: none;
+  }
+}
+
+/* ---- entrée « rise » jouée AU MONTAGE (héros de page) ----
+   @starting-style : on transitionne DEPUIS un état de départ VERS l'état
+   naturel de l'élément → l'opacité atténuée des sous-titres (0.72/0.82) est
+   préservée. Se rejoue à chaque insertion (donc à chaque navigation). */
+.anim-rise {
+  transition:
+    opacity 0.72s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.72s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@starting-style {
+  .anim-rise {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+}
+.anim-d1 {
+  transition-delay: 0.09s;
+}
+.anim-d2 {
+  transition-delay: 0.18s;
+}
+.anim-d3 {
+  transition-delay: 0.27s;
+}
+.anim-d4 {
+  transition-delay: 0.36s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .anim-rise {
+    transition: none;
   }
 }
 

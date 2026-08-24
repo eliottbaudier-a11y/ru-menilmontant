@@ -112,9 +112,9 @@ export default function CollectionClient() {
       <Nav />
       <div className={styles.page}>
         <header className={styles.hero}>
-          <div className="eyebrow eau">Mon compte</div>
-          <h1 className="display">Ma Collection</h1>
-          <p>
+          <div className="eyebrow eau anim-rise">Mon compte</div>
+          <h1 className="display anim-rise anim-d1">Ma Collection</h1>
+          <p className="anim-rise anim-d2">
             Ton compte garde une vraie trace de chaque plaque scannée. Chaque plaque débloquée te
             donne son image en HD, et scanner les huit débloque la récompense finale.
           </p>

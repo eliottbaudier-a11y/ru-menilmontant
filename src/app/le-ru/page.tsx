@@ -18,9 +18,9 @@ export default function LeRuPage() {
 
       <div className={styles.page}>
       <header className={styles.hero}>
-        <div className="eyebrow eau">Préambule</div>
-        <h1 className="display">Qu&apos;est-ce qu&apos;un ru&nbsp;?</h1>
-        <p className={styles.sub}>
+        <div className="eyebrow eau anim-rise">Préambule</div>
+        <h1 className="display anim-rise anim-d1">Qu&apos;est-ce qu&apos;un ru&nbsp;?</h1>
+        <p className={`${styles.sub} anim-rise anim-d2`}>
           Avant les huit plaques, un mot presque oublié, et un ruisseau enfoui sous Paris.
         </p>
       </header>

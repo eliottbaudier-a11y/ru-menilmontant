@@ -65,16 +65,16 @@ export default function Home() {
           </g>
         </svg>
 
-        <div className={styles.kicker}>Un parcours en 8 plaques · Paris</div>
-        <h1 className="display">
+        <div className={`${styles.kicker} anim-rise`}>Un parcours en 8 plaques · Paris</div>
+        <h1 className="display anim-rise anim-d1">
           Les ruisseaux
           <br />
           oubliés de Paris
         </h1>
-        <p className={styles.accroche}>
+        <p className={`${styles.accroche} anim-rise anim-d2`}>
           Sous vos pas, une rivière a disparu. Suivez ses huit plaques pour la faire ressurgir.
         </p>
-        <div className={styles.scrollcue}>
+        <div className={`${styles.scrollcue} anim-rise anim-d3`}>
           <span className={styles.bar} /> Descendre
         </div>
       </header>

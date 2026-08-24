@@ -39,9 +39,9 @@ export default function AProposPage() {
 
       {/* Hero (bleu) */}
       <header className={styles.hero}>
-        <div className="eyebrow eau">À propos du dispositif</div>
-        <h1 className="display">Quand il pleut, le ru réapparaît</h1>
-        <p className={styles.sub}>
+        <div className="eyebrow eau anim-rise">À propos du dispositif</div>
+        <h1 className="display anim-rise anim-d1">Quand il pleut, le ru réapparaît</h1>
+        <p className={`${styles.sub} anim-rise anim-d2`}>
           Une plaque de fonte, posée sur le trottoir parisien, qui ne livre son secret que sous la
           pluie.
         </p>
