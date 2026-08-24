@@ -76,7 +76,7 @@ export default function RainReveal() {
           </svg>
         </div>
 
-        <div className={styles.hintlabel}>Déplacez le curseur — la pluie révèle le tracé</div>
+        <div className={styles.hintlabel}>Déplacez le curseur : la pluie révèle le tracé</div>
       </div>
     </section>
   );

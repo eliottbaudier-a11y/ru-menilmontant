@@ -17,7 +17,7 @@ export default function PlaquePlate({ plaque }: { plaque: Plaque }) {
           <Image
             className={styles.plate}
             src={plaque.fonte}
-            alt={`Plaque en fonte gravée — ${plaque.title}`}
+            alt={`Plaque en fonte gravée, ${plaque.title}`}
             width={860}
             height={860}
             sizes="(max-width:820px) 90vw, 430px"

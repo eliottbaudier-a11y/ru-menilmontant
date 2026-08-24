@@ -21,7 +21,7 @@ export default function LeRuPage() {
         <div className="eyebrow eau">Préambule</div>
         <h1 className="display">Qu&apos;est-ce qu&apos;un ru&nbsp;?</h1>
         <p className={styles.sub}>
-          Avant les huit plaques, un mot presque oublié — et un ruisseau enfoui sous Paris.
+          Avant les huit plaques, un mot presque oublié, et un ruisseau enfoui sous Paris.
         </p>
       </header>
 
@@ -32,7 +32,7 @@ export default function LeRuPage() {
             <div className="eyebrow">Définition</div>
             <h2 className="display">Un ru, c&apos;est un ruisseau</h2>
             <p>
-              Un ru — du latin <em>rivus</em> — désigne un petit cours d&apos;eau, un ruisseau.
+              Un ru (du latin <em>rivus</em>) désigne un petit cours d&apos;eau, un ruisseau.
               Le mot, aujourd&apos;hui tombé en désuétude, nommait ces filets d&apos;eau qui
               sillonnaient campagnes et villes avant d&apos;être détournés, busés ou enfouis.
             </p>
@@ -45,7 +45,7 @@ export default function LeRuPage() {
           <Reveal className={styles.figure}>
             <Image src="/img/le-ru/00.jpg" alt="" fill sizes="(max-width:820px) 100vw, 560px" style={{ objectFit: "cover" }} />
             <figcaption className={styles.figcap}>
-              La Bièvre à ciel ouvert, dans les rues des tanneurs — un ru dans la ville.
+              La Bièvre à ciel ouvert, dans les rues des tanneurs : un ru dans la ville.
             </figcaption>
           </Reveal>
         </div>
@@ -94,13 +94,13 @@ export default function LeRuPage() {
             <h2 className="display">Pourquoi ce ruisseau</h2>
             <p>
               J&apos;ai choisi le ru de Ménilmontant parce qu&apos;il me correspond : je suis né
-              là-bas, et c&apos;est mon quartier que ce ruisseau raconte. Voir sa ville — ou du
-              moins son quartier — se transformer au fil des siècles, c&apos;est ce qui m&apos;a le
+              là-bas, et c&apos;est mon quartier que ce ruisseau raconte. Voir sa ville (ou du
+              moins son quartier) se transformer au fil des siècles, c&apos;est ce qui m&apos;a le
               plus parlé.
             </p>
             <p>
               Ce cours d&apos;eau condense toute une trajectoire : d&apos;élément naturel du
-              paysage, il est devenu une infrastructure souterraine invisible — le Grand Égout —
+              paysage, il est devenu une infrastructure souterraine invisible (le Grand Égout)
               avant de disparaître sous la ville. M&apos;y intéresser, c&apos;est interroger cette
               transition du vivant vers le technique, et les conséquences urbaines, sociales et
               symboliques de cette disparition.
@@ -108,14 +108,14 @@ export default function LeRuPage() {
             <p>
               De là vient l&apos;idée de <strong>re-signalisation</strong> : rendre de nouveau
               perceptible un élément du territoire effacé. La plaque d&apos;égout, banale sur le
-              trottoir, devient le marqueur de surface de cette eau enfouie — le fil discret qui
+              trottoir, devient le marqueur de surface de cette eau enfouie, le fil discret qui
               relie le ru d&apos;hier au réseau d&apos;aujourd&apos;hui.
             </p>
           </Reveal>
           <Reveal className={styles.figure}>
             <Image src="/img/le-ru/02.jpg" alt="" fill sizes="(max-width:820px) 100vw, 560px" style={{ objectFit: "cover" }} />
             <figcaption className={styles.figcap}>
-              «&nbsp;Ruisseau de Paris&nbsp;», l&apos;eau qui court encore dans le caniveau — photo Pierre Boucher.
+              «&nbsp;Ruisseau de Paris&nbsp;», l&apos;eau qui court encore dans le caniveau (photo Pierre Boucher).
             </figcaption>
           </Reveal>
         </div>
@@ -128,8 +128,8 @@ export default function LeRuPage() {
           <h2 className="display">Un principe pour tous les ru oubliés</h2>
           <p>
             Ce que je propose pour le ru de Ménilmontant vaut pour tous les cours d&apos;eau
-            disparus de Paris. Le dispositif — une plaque gravée, un parcours à scanner, une
-            mémoire rendue lisible dans la rue — est reproductible : partout où l&apos;eau a été
+            disparus de Paris. Le dispositif (une plaque gravée, un parcours à scanner, une
+            mémoire rendue lisible dans la rue) est reproductible : partout où l&apos;eau a été
             enfouie, on peut la re-signaler.
           </p>
           <div className={styles.chips}>

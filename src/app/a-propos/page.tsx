@@ -9,7 +9,7 @@ import styles from "./apropos.module.css";
 export const metadata: Metadata = {
   title: "À propos",
   description:
-    "Le dispositif : une plaque de fonte gravée qui, sous la pluie, révèle le tracé du ru et un QR code — scanner, découvrir, collectionner, jusqu'à la récompense.",
+    "Le dispositif : une plaque de fonte gravée qui, sous la pluie, révèle le tracé du ru et un QR code : scanner, découvrir, collectionner, jusqu'à la récompense.",
 };
 
 const plaque = plaques.find((p) => p.slug === "aux-sources-du-ru") ?? plaques[0];
@@ -28,7 +28,7 @@ const STEPS = [
   {
     n: "03",
     t: "La collection se remplit",
-    p: "Chaque plaque scannée rejoint la collection. Huit plaques jalonnent Paris, de Belleville à la Seine — huit fragments du même ruisseau.",
+    p: "Chaque plaque scannée rejoint la collection. Huit plaques jalonnent Paris, de Belleville à la Seine, huit fragments du même ruisseau.",
   },
 ];
 
@@ -39,7 +39,7 @@ export default function AProposPage() {
 
       {/* Hero (bleu) */}
       <header className={styles.hero}>
-        <div className="eyebrow eau">À propos — le dispositif</div>
+        <div className="eyebrow eau">À propos du dispositif</div>
         <h1 className="display">Quand il pleut, le ru réapparaît</h1>
         <p className={styles.sub}>
           Une plaque de fonte, posée sur le trottoir parisien, qui ne livre son secret que sous la
@@ -58,7 +58,7 @@ export default function AProposPage() {
             passage répété et distrait.
           </p>
           <p>
-            Par temps sec, la plaque reste discrète — presque muette. Elle intrigue sans se livrer :
+            Par temps sec, la plaque reste discrète, presque muette. Elle intrigue sans se livrer :
             un objet familier du sol parisien, mais dont quelque chose semble attendre.
           </p>
         </Reveal>
@@ -84,7 +84,7 @@ export default function AProposPage() {
           <Reveal className={styles.plateWrap}>
             <PlaquePlate plaque={plaque} />
             <div className={styles.legend}>
-              Sous la pluie, le tracé du ru — et le QR code — se révèlent.
+              Sous la pluie, le tracé du ru et le QR code se révèlent.
             </div>
           </Reveal>
         </div>
@@ -115,7 +115,7 @@ export default function AProposPage() {
           <div className="eyebrow center eau">La récompense</div>
           <h2 className="display">Au bout du parcours</h2>
           <p>
-            Une fois les huit plaques réunies, la récompense se débloque — le prolongement logique
+            Une fois les huit plaques réunies, la récompense se débloque. Un prolongement logique
             du voyage, du souterrain rêvé au souterrain réel :
           </p>
           <div className={styles.card}>
@@ -132,7 +132,7 @@ export default function AProposPage() {
       <div className={styles.note}>
         <div className={styles.inner}>
           L&apos;hydrochromie est l&apos;intention d&apos;origine du dispositif. Pour le diplôme,
-          l&apos;objet est réalisé en <strong>gravure béton</strong> — le tracé et la cartographie
+          l&apos;objet est réalisé en <strong>gravure béton</strong> : le tracé et la cartographie
           incisés dans la matière, où l&apos;eau de pluie vient se loger pour révéler le dessin. Un
           prototype béton accompagne la soutenance.
         </div>

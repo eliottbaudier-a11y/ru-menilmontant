@@ -92,7 +92,7 @@ export default function Home() {
             Le ru dans Paris, en volume
           </h2>
           <p style={{ maxWidth: 680, margin: "12px auto 0", opacity: 0.82 }}>
-            Tournez la ville (glisser gauche-droite, haut-bas), survolez une plaque pour la situer —
+            Tournez la ville (glisser gauche-droite, haut-bas), survolez une plaque pour la situer,
             des hauteurs de Ménilmontant jusqu&apos;à la Seine.
           </p>
         </Reveal>

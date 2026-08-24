@@ -79,7 +79,7 @@ export default function LockedPlaque({ plaque }: { plaque: Plaque }) {
               </g>
             </svg>
           </div>
-          <div className={styles.hint}>Passez sur la scène — la pluie réveille le ru ↑</div>
+          <div className={styles.hint}>Passez sur la scène : la pluie réveille le ru ↑</div>
         </div>
 
         <div>
@@ -88,7 +88,7 @@ export default function LockedPlaque({ plaque }: { plaque: Plaque }) {
           </div>
           <h1 className={`display ${styles.title}`}>{plaque.title}</h1>
           <p className={styles.sub}>
-            Une plaque du parcours encore enfouie. Son histoire — «&nbsp;{plaque.subtitle}&nbsp;» —
+            Une plaque du parcours encore enfouie. Son histoire («&nbsp;{plaque.subtitle}&nbsp;»)
             attend d&apos;être ravivée.
           </p>
 
@@ -108,7 +108,7 @@ export default function LockedPlaque({ plaque }: { plaque: Plaque }) {
 
           {already && (
             <p className={styles.scanned}>
-              ✓ Plaque scannée — le contenu narratif de ce point est en préparation.
+              ✓ Plaque scannée : le contenu narratif de ce point est en préparation.
             </p>
           )}
 

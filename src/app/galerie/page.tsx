@@ -59,7 +59,7 @@ export default function GaleriePage() {
         <div className="eyebrow eau">Libre-service · inventaire des formes</div>
         <h1 className="display">La plaque d&apos;égout, un langage universel</h1>
         <p className={styles.intro}>
-          Objet banal du trottoir, la plaque d&apos;égout est partout — et partout différente.
+          Objet banal du trottoir, la plaque d&apos;égout est partout, et partout différente.
           Motifs, matériaux, inscriptions : chaque ville, chaque époque y inscrit sa signature.
           Survolez pour révéler leurs couleurs.
         </p>
@@ -94,7 +94,7 @@ export default function GaleriePage() {
       </section>
 
       <p className={styles.credits}>
-        Sources : archives BnF / Gallica &amp; collections diverses — usage pédagogique, projet de
+        Sources : archives BnF / Gallica &amp; collections diverses · usage pédagogique, projet de
         diplôme. Les localisations indiquées sont données à titre indicatif.
       </p>
       </div>

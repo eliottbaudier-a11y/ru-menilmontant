@@ -16,7 +16,7 @@ export async function generateMetadata({
   const plaque = getPlaque(slug);
   if (!plaque) return { title: "Plaque introuvable" };
   return {
-    title: `Plaque ${plaque.roman} — ${plaque.title}`,
+    title: `Plaque ${plaque.roman} · ${plaque.title}`,
     description: plaque.subtitle,
   };
 }

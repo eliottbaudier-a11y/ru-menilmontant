@@ -27,7 +27,7 @@ export default function Footer({
       <div>
         {note && <div style={{ marginBottom: 6 }}>{note}</div>}
         <span style={{ opacity: 0.55, fontSize: 11 }}>
-          Images : archives BnF / Gallica &amp; collections — usage pédagogique
+          Images : archives BnF / Gallica &amp; collections · usage pédagogique
         </span>
       </div>
 

@@ -111,7 +111,7 @@ export default function PlaqueArticle({ plaque }: { plaque: Plaque }) {
         <Reveal className={styles.wrap}>
           <div className="eyebrow">Fiche technique</div>
           <h3 className="display" style={{ fontSize: "clamp(26px,3vw,44px)" }}>
-            Plaque {plaque.roman} — caractéristiques
+            Plaque {plaque.roman} · caractéristiques
           </h3>
           <p className={styles.specnote}>
             Coordonnées relevées sur le terrain · dimensions et matériau confirmés.
@@ -147,7 +147,7 @@ export default function PlaqueArticle({ plaque }: { plaque: Plaque }) {
             <div className="eyebrow center eau">Ma collection</div>
             <h2 className="display">Plaque {plaque.roman} débloquée</h2>
             <p className={styles.collecProg}>
-              Continuez le parcours — scannez les autres plaques pour compléter le flux
+              Continuez le parcours : scannez les autres plaques pour compléter le flux
               ({TOTAL_PLAQUES} au total).
             </p>
           </Reveal>

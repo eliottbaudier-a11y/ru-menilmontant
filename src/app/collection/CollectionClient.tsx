@@ -198,7 +198,7 @@ export default function CollectionClient() {
               </div>
               {!demoDone && (
                 <button className={styles.demo} onClick={() => demoUnlock()}>
-                  Mode démo — débloquer I·II·III
+                  Mode démo : débloquer I·II·III
                 </button>
               )}
               {user && (
@@ -282,20 +282,20 @@ export default function CollectionClient() {
               <h3>−50 % au Musée des Égouts</h3>
               <p>
                 Scanne les huit plaques pour débloquer ta récompense : <strong>50 % de réduction
-                sur l&apos;entrée du Musée des Égouts de la Ville de Paris</strong> — pour prolonger
+                sur l&apos;entrée du Musée des Égouts de la Ville de Paris</strong>. De quoi prolonger
                 le voyage, cette fois sous terre, dans le vrai réseau du ru.
               </p>
               <div className={styles.rprog}>
                 {complete
-                  ? "✓ Débloqué — 8 / 8"
-                  : `Débloqué à 8/8 — plus que ${TOTAL_PLAQUES - progress} plaque${
+                  ? "✓ Débloqué · 8 / 8"
+                  : `Débloqué à 8/8 : plus que ${TOTAL_PLAQUES - progress} plaque${
                       TOTAL_PLAQUES - progress > 1 ? "s" : ""
                     }`}
               </div>
               <span className={styles.badge}>
                 {complete
                   ? "Code de réduction : RU-MENIL-50"
-                  : `Réduction verrouillée — ${progress}/8`}
+                  : `Réduction verrouillée · ${progress}/8`}
               </span>
             </div>
           </div>

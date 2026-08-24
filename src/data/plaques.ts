@@ -65,14 +65,14 @@ const SPECS_COMMON = (n: string, lieu: string, coords: string): Spec[] => [
   { label: "Emplacement", value: lieu },
   { label: "Coordonnées", value: coords },
   { label: "Matériau", value: "Fonte et bitume" },
-  { label: "Classe de résistance", value: "D400 — chaussée" },
+  { label: "Classe de résistance", value: "D400 (chaussée)" },
   { label: "Diamètre", value: "Ø 800 mm (80 cm)" },
-  { label: "Poids", value: "50–70 kg" },
+  { label: "Poids", value: "50-70 kg" },
   { label: "Fonderie (réf.)", value: "Saint-Gobain PAM · Pont-à-Mousson" },
   { label: "Motif gravé", value: "Tracé du ru + cartographie de Paris" },
   { label: "Inscriptions", value: "VILLE DE PARIS · ASSAINISSEMENT · EU/EP" },
   { label: "N° de série", value: `RU-${n} / 08` },
-  { label: "Mise en service", value: "2026 — projet de diplôme" },
+  { label: "Mise en service", value: "2026 (projet de diplôme)" },
 ];
 
 export const plaques: Plaque[] = [
@@ -97,14 +97,14 @@ export const plaques: Plaque[] = [
         lead: "Difficile de l'imaginer aujourd'hui : ici, les immeubles et les cafés ont remplacé une campagne vallonnée, plus proche du village que du quartier parisien.",
         paragraphs: [
           "Il y a trois siècles, on apercevait des vignes, des jardins et des vergers descendant les pentes de Belleville. Après chaque pluie, l'eau surgissait du sol par de petites sources qui se rejoignaient dans les fossés des chemins pour former un ruisseau : le Ru de Ménilmontant.",
-          "Ce n'était pas une rivière majestueuse — certains étés, un simple filet d'eau — mais pour le village, elle était indispensable : on y abreuvait les bêtes, on arrosait les cultures, on surveillait son débit. Après l'orage, les enfants y lançaient de petits bateaux de bois qui dérivaient vers Paris.",
+          "Ce n'était pas une rivière majestueuse (certains étés, un simple filet d'eau), mais pour le village, elle était indispensable : on y abreuvait les bêtes, on arrosait les cultures, on surveillait son débit. Après l'orage, les enfants y lançaient de petits bateaux de bois qui dérivaient vers Paris.",
         ],
       },
       duo: [
         {
           back: "/img/plaque-1/01.jpg",
           front: "/img/plaque-1/02.jpg",
-          caption: "Belleville, village et vignes — gravure, 1707",
+          caption: "Belleville, village et vignes (gravure, 1707)",
         },
         {
           back: "/img/plaque-1/03.jpg",
@@ -149,7 +149,7 @@ export const plaques: Plaque[] = [
     hasContent: true,
     specs: SPECS_COMMON("02", "Canal Saint-Martin · Paris 10ᵉ", "48.8664 N · 2.3689 E"),
     content: {
-      heroCredit: "Image : Lavoir sur le canal Saint-Martin — carte postale LL.",
+      heroCredit: "Image : Lavoir sur le canal Saint-Martin (carte postale LL.)",
       intro: {
         eyebrow: "La plaque · point II",
         title: "L'eau circulait déjà ici",
@@ -163,7 +163,7 @@ export const plaques: Plaque[] = [
         {
           back: "/img/plaque-2/01.jpg",
           front: "/img/plaque-2/02.jpg",
-          caption: "Assainissement du canal Saint-Martin — L'Illustration, XIXᵉ s.",
+          caption: "Assainissement du canal Saint-Martin (L'Illustration, XIXᵉ s.)",
         },
         {
           back: "/img/plaque-2/03.jpg",
@@ -177,11 +177,11 @@ export const plaques: Plaque[] = [
         image: "/img/plaque-2/05.jpg",
         paragraphs: [
           "Lorsque le canal Saint-Martin est inauguré au XIXᵉ siècle, il ne fait finalement qu'organiser et maîtriser une présence de l'eau installée depuis des siècles. L'hiver, sa surface gelait et tout Paris venait y patiner.",
-          "Sous les quais paisibles que l'on connaît aujourd'hui subsiste la mémoire d'un paysage bien plus sauvage — avant que le canal ne soit à son tour partiellement recouvert, boulevard Richard-Lenoir.",
+          "Sous les quais paisibles que l'on connaît aujourd'hui subsiste la mémoire d'un paysage bien plus sauvage, avant que le canal ne soit à son tour partiellement recouvert, boulevard Richard-Lenoir.",
         ],
       },
       quote: {
-        text: "Le canal a rendu l'eau visible — et fait oublier les cours d'eau plus anciens.",
+        text: "Le canal a rendu l'eau visible, et fait oublier les cours d'eau plus anciens.",
         image: "/img/plaque-2/06.jpg",
       },
       object: {
@@ -208,7 +208,7 @@ export const plaques: Plaque[] = [
     hasContent: true,
     specs: SPECS_COMMON("03", "Le Marais · Paris 3ᵉ", "48.8680 N · 2.3534 E"),
     content: {
-      heroCredit: "Image : Place des Vosges — l'ancien marais asséché et bâti",
+      heroCredit: "Image : Place des Vosges (l'ancien marais asséché et bâti)",
       intro: {
         eyebrow: "La plaque · point III",
         title: "Le nom dit l'eau",

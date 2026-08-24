@@ -19,8 +19,8 @@ export default function HomeCollection() {
         <p className={styles.prog}>
           {progress} / {TOTAL_PLAQUES} plaques découvertes
           {remaining > 0
-            ? ` — scannez les ${remaining} dernières pour compléter le flux.`
-            : " — le flux est complet, félicitations !"}
+            ? `. Scannez les ${remaining} dernières pour compléter le flux.`
+            : ". Le flux est complet, félicitations !"}
         </p>
       </Reveal>
       <Reveal>

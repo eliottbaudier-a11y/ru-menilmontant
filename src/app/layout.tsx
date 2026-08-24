@@ -5,13 +5,13 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "Ru de Ménilmontant — Les ruisseaux oubliés de Paris",
+    default: "Ru de Ménilmontant · Les ruisseaux oubliés de Paris",
     template: "%s · Ru de Ménilmontant",
   },
   description:
     "Sous vos pas, une rivière a disparu. Suivez ses huit plaques gravées pour faire ressurgir le ru de Ménilmontant, de Belleville à la Seine.",
   openGraph: {
-    title: "Ru de Ménilmontant — Les ruisseaux oubliés de Paris",
+    title: "Ru de Ménilmontant · Les ruisseaux oubliés de Paris",
     description:
       "Un parcours narratif en 8 plaques à travers Paris. Scannez, découvrez, complétez la collection.",
     type: "website",

@@ -570,7 +570,7 @@ export default function Map3D() {
       <div className={styles.ui}>
         <div className={styles.k}>Ru de Ménilmontant</div>
         <h1>Spatialisation du RU.</h1>
-        <p>Des hauteurs de Ménilmontant jusqu&apos;à la Seine — le relief et le cours d&apos;eau enfoui.</p>
+        <p>Des hauteurs de Ménilmontant jusqu&apos;à la Seine : le relief et le cours d&apos;eau enfoui.</p>
       </div>
       <div className={styles.badge}>carte 3D</div>
       <div className={styles.hint}>
