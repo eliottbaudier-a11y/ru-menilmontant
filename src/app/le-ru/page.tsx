@@ -106,7 +106,7 @@ export default function LeRuPage() {
               symboliques de cette disparition.
             </p>
             <p>
-              De là vient l&apos;idée de <strong>re-signalisation</strong> : rendre de nouveau
+              De là vient l&apos;idée de <strong>re-signaler</strong> : rendre de nouveau
               perceptible un élément du territoire effacé. La plaque d&apos;égout, banale sur le
               trottoir, devient le marqueur de surface de cette eau enfouie, le fil discret qui
               relie le ru d&apos;hier au réseau d&apos;aujourd&apos;hui.
