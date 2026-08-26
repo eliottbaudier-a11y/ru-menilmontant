@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import styles from "./galerie.module.css";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/galerie" },
   title: "Galerie",
   description:
     "La plaque d'égout, un langage universel : un inventaire des formes, à travers le monde et au fil du temps.",

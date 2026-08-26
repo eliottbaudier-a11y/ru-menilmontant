@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import Map3D from "@/components/Map3D";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/carte" },
   title: "La Carte",
   description:
     "Le ru de Ménilmontant spatialisé en volume, façon Terra Forma : relief, sol en coupe et cours d'eau enfoui, des hauteurs de Ménilmontant à la Seine.",

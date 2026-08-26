@@ -8,6 +8,7 @@ import styles from "./qr.module.css";
 export const metadata: Metadata = {
   title: "QR codes",
   description: "Les 8 QR codes du parcours, à imprimer et poser sur les plaques.",
+  robots: { index: false, follow: false },
 };
 
 type QrEntry = { n: number; roman: string; slug: string; titre: string; url: string; png: string };

@@ -7,6 +7,7 @@ import { plaques } from "@/data/plaques";
 import styles from "./apropos.module.css";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/a-propos" },
   title: "À propos",
   description:
     "Le dispositif : une plaque de fonte gravée qui, sous la pluie, révèle le tracé du ru et un QR code : scanner, découvrir, collectionner, jusqu'à la récompense.",

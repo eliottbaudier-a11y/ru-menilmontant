@@ -6,6 +6,7 @@ import Reveal from "@/components/Reveal";
 import styles from "./leru.module.css";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/le-ru" },
   title: "Le Ru",
   description:
     "Qu'est-ce qu'un ru ? Le préambule au parcours : un mot presque oublié et un ruisseau enfoui sous Paris, de 629 à 1823.",

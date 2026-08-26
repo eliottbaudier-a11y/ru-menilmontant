@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import PlaqueSlider from "@/components/PlaqueSlider";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/parcours" },
   title: "Le Parcours",
   description:
     "Le cours du ru de Ménilmontant en 8 plaques, de la source à l'embouchure. Chaque plaque se débloque en la scannant sur le terrain.",
