@@ -6,6 +6,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  verification: { google: "D0xWXH72EjHPGpDfJbCBEeKAewy5zfXv7FaNzbGF2tQ" },
   title: {
     default: "Ru de Ménilmontant · Le ruisseau oublié de Paris",
     template: "%s · Ru de Ménilmontant",
